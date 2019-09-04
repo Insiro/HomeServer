@@ -36,7 +36,7 @@ function nullDialog() {
     console.log("None");
     content.innerHTML = "None"
     name.innerText = "None"
-    detailBtn.addEventListener("click", function () { location.href = "detail.html?id=None"; })
+    detailBtn.addEventListener("click", function() { location.href = "detail.html?id=None"; })
 }
 
 function viewDialog() {
@@ -50,15 +50,15 @@ function viewDialog() {
         var id = arguments[0]
         var table = arguments[1]
         req.open("GET", hostname + "info/" + table + "/" + id);
-        req.addEventListener("load", function () {
+        req.addEventListener("load", function() {
             if (req.status != 200) {
                 console.log('status error')
                 nullDialog()
                 return
             }
-            detailBtn.addEventListener("click", function () {
+            detailBtn.addEventListener("click", function() {
                 go_detail(id, table)
-                //location.href = "detail.html?id=\"" + id + "\"&table=\"" + table + "\"";
+                    //location.href = "detail.html?id=\"" + id + "\"&table=\"" + table + "\"";
             })
             content.innerHTML = "<table id='diatable'></table>"
             console.log("GetList Get success!");
@@ -120,7 +120,7 @@ function viewDialog() {
 function getGameList(theGame, length) {
     var req = new XMLHttpRequest()
     req.open("GET", hostname + "list/" + theGame + "/" + length);
-    req.addEventListener("load", function () {
+    req.addEventListener("load", function() {
         if (req.status === 200) {
             console.log("GetList success!");
             var json = JSON.parse(req.responseText);
@@ -138,7 +138,7 @@ function getGameList(theGame, length) {
 function get_detail(table, id) {
     var req = new XMLHttpRequest()
     req.open("GET", hostname + "info/" + table + "/" + id);
-    req.addEventListener("load", function () {
+    req.addEventListener("load", function() {
         if (req.status === 200) {
             console.log("Get info success!");
             var json = JSON.parse(req.responseText);
@@ -173,7 +173,7 @@ function includeHTML() {
         file = elmnt.getAttribute("include-html");
         if (file) {
             xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
+            xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     elmnt.innerHTML = this.responseText;
                     elmnt.removeAttribute("include-html");
@@ -203,7 +203,7 @@ function reloadLoginState(loginBox) {
     }
 
     loginXhttpRequest.open("GET", "php/isLoggedin.php");
-    loginXhttpRequest.addEventListener("load", function () {
+    loginXhttpRequest.addEventListener("load", function() {
         var log_in_item = document.getElementById('logged_nav').style;
         var un_log_in_tem = document.getElementById('unlogged_nav').style;
         //console.log(log_in_item, un_log_in_tem);
@@ -235,7 +235,7 @@ function loginRequest() {
     xhttp.open("POST", "php/makelogin.php");
 
     xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
-    xhttp.addEventListener("load", function () {
+    xhttp.addEventListener("load", function() {
         parsedJson = JSON.parse(xhttp.responseText);
 
         if (parsedJson.success) {
@@ -252,7 +252,7 @@ function logout() {
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", "php/logout.php");
 
-    xhttp.addEventListener("load", function () {
+    xhttp.addEventListener("load", function() {
         reloadLoginState(false);
     });
 
