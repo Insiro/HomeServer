@@ -18,12 +18,13 @@ from django.urls import path, include
 
 import cyphers.views
 import cyphers.api
+import home.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('api', include('cyphers.api')),
-    path('api/apis', cyphers.api.api, name='api'),
-    path('', cyphers.api.api),
+    path('api/', cyphers.api.api, name='api'),
+    path('', home.views.index),
     path('api/todayCyphers', cyphers.api.todayCyphers),
     path('api/UserID/name=<name>', cyphers.api.getUserID),
     path('api/charRank/char=<charname>', cyphers.api.charRank),

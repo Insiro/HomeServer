@@ -20,7 +20,7 @@ charactor = {'로라스': 'loras', '휴톤': 'huton', '루이스': 'louis', '타
              '티엔': 'tian', '하랑': 'harang', 'J': 'j', 'j': 'j', '제이': 'j', '벨져': 'belzer', '리첼': 'richel', '리사': 'risa',
              '릭': 'rick', '제키엘': 'jekiel', '탄야': 'tanya', '캐럴': 'carol', '라이샌더': 'lysander', '루드빅': 'ludwig',
              '멜빈': 'melvin', '디아나': 'diana', '클리브': 'clive', '헬레나': 'helena', '에바': 'eva', '론': 'ron', '레오노르': 'leonor',
-             '시드니': 'sidney'
+             '시드니': 'sidney', '테이':'tei','티모시':'timothy','엘프리데':'elfriede'
              }
 
 
@@ -76,8 +76,12 @@ def todayCyphers(requests):
     data = list()
     for lit in today.select('ul > li'):
         p = lit.select('li > p')
-        data.append({'title': p[0].a.text, 'link': hostname +
-                     p[0].a['href'], 'writer': p[1].text[1:-1]})
+        print('-----------------')
+        print(p)
+        if 'href' in p[0].a.keys():
+            link = hostname + p[0].a['href']
+        else : link = None
+        data.append({'title': p[0].a.text, 'link': link, 'writer': p[1].text[1:-1]})
     return JsonResponse({"data": data},  json_dumps_params={'ensure_ascii': False})
 
 
