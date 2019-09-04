@@ -14,10 +14,10 @@
         <title>insiro- Home</title>
 
         <!-- Custom fonts for this template-->
-        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
         <!-- Custom styles for this template-->
-        <link href="css/sb-admin.css" rel="stylesheet">
-        <link href="css/addition.css" rel="stylesheet">
+        <link href="{% static 'css/sb-admin.css'%}" rel="stylesheet">
+        <link href="{% static 'css/addition.css'%}" rel="stylesheet">
     </head>
 
     <body id="page-top">
@@ -284,30 +284,31 @@
 
         </div>
         <!-- Bootstrap core JavaScript-->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/static/vendor/jquery/jquery.min.js"></script>
+        <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js'"></script>
 
         <!-- Core plugin JavaScript-->
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
 
         <!-- Page level plugin JavaScript-->
-        <script src="vendor/datatables/jquery.dataTables.js"></script>
-        <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
-        <script src="js/addition.js"></script>
+        <script src="/static/vendor/datatables/jquery.dataTables.js"></script>
+        <script src="/static/vendor/datatables/dataTables.bootstrap4.js"></script>
+        <script src="/static/js/addition.js"></script>
         <script>
-            if (window.sessionStorage.getItem('login') == true) {
-                console.log('logined')
-                var logined = document.getElementsByClassName('loggined');
-                var unloggined = document.getElementsByClassName('unloggined');
-                for (i = 0; i < loggined.length; i++) {
-                    logined.item(i).style.display = 'none';
-                }
-                for (i = 0; i < loggined.length; i++) {
-                    logined.item(i).style.display = 'inline';
-                }
-            } else {
-                console.log('Not logged in')
-            }
+            //login
+            // if (window.sessionStorage.getItem('login') == true) {
+            //     console.log('logined')
+            //     var logined = document.getElementsByClassName('loggined');
+            //     var unloggined = document.getElementsByClassName('unloggined');
+            //     for (i = 0; i < loggined.length; i++) {
+            //         logined.item(i).style.display = 'none';
+            //     }
+            //     for (i = 0; i < loggined.length; i++) {
+            //         logined.item(i).style.display = 'inline';
+            //     }
+            // } else {
+            //     console.log('Not logged in')
+            // }
 
             function writeList() {
                 if (arguments[1].length == 0 || arguments.length < 1) document.getElementById(theGame + "_list").innerHTML += ("<li> No data </li>");
@@ -325,11 +326,11 @@
             //getGameList("LOL", 4);
 
             $(function () {
-                $("#footer").load("footer.html");
-                $("#Nav").load("navbar.html");
-                $("#regist_new").load("singUpModal.html");
-                $("#modalDialog").load("modal_dialog.html");
-                $("#Login").load("log-inModal.html");
+                $("#footer").load("/static/extention_html/footer.html");
+                $("#Nav").load("/static/extention_html/navbar.html");
+                $("#regist_new").load("/static/extention_html/singUpModal.html");
+                $("#modalDialog").load("/static/extention_html/modal_dialog.html");
+                $("#Login").load("/static/extention_html/log-inModal.html");
             });
 
         // LOGIN
