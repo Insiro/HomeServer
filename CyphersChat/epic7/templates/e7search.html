@@ -10,7 +10,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Insiro Search</title>
+        <title>무한기사단 Search</title>
 
         <!-- Custom fonts for this template-->
         <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -27,7 +27,7 @@
         <div class="modal dia" id="modalDialog"></div>
         <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-            <a class="navbar-brand mr-1" href="./">Insiro</a>
+            <a class="navbar-brand mr-1" href="./">무한기사단</a>
 
             <!-- Navbar Search -->
             <form action="search" class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -119,8 +119,8 @@
             $(function () {
                 $("#regist_new").load("/static/extention_html/singUpModal.html");
                 $("#footer").load("/static/extention_html/footer.html");
-                $("#Nav").load("/static/extention_html/navbar.html");
-                $("#sidebar").load("/static/extention_html/sidebar.html", function () {
+                $("#Nav").load("/static/e7html/navbar.html");
+                $("#sidebar").load("/static/e7html/sidebar.html", function () {
                     document.getElementById('search_lit').className += ' active'
                 });
                 $("#modalDialog").load("/static/extention_html/modal_dialog.html");

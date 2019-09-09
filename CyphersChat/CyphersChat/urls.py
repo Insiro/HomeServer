@@ -19,6 +19,7 @@ from django.urls import path, include
 import cyphers.views
 import cyphers.api
 import home.views
+import epic7.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -39,4 +40,7 @@ urlpatterns = [
     path('api/allRanking/<args>', cyphers.api.allRanking),
     path('api/allRanking', cyphers.api.allRank),
     path('api/rating/<args>', cyphers.api.rating),
+    path('epic/',epic7.views.index),
+    path('epic/tips',epic7.views.tiplit),
+    path('epic/search',epic7.views.search),
 ]

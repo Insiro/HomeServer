@@ -10,24 +10,27 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Insiro Search</title>
+        <title>무한 기사단 공략</title>
 
         <!-- Custom fonts for this template-->
         <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
         <!-- Custom styles for this template-->
         <link href="{% static 'css/sb-admin.css'%}" rel="stylesheet">
         <link href="{% static 'css/addition.css'%}" rel="stylesheet">
+        <link href="{% static 'vendor/datatables/dataTables.bootstrap4.css'%}" rel="stylesheet">
+
     </head>
 
     <body id="page-top">
 
+
         <!-- dialog -->
         <div class="modal dia" id="regist_new"> </div>
-        <div class="modal dia" id="Login"> </div>
         <div class="modal dia" id="modalDialog"></div>
+        <div class="modal dia" id="Login"> </div>
         <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-            <a class="navbar-brand mr-1" href="./">Insiro</a>
+            <a class="navbar-brand mr-1" href=".">무한기사단</a>
 
             <!-- Navbar Search -->
             <form action="search" class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -35,62 +38,72 @@
                     <input type="text" class="form-control" name="kq" placeholder="Search for..." aria-label="Search"
                         aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                        <button class="btn btn-primary" type="submit">
+                        <button class="btn" type="submit">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
                 </div>
             </form>
-
             <!-- Navbar -->
             <div id='Nav'></div>
-
         </nav>
 
-
         <div id="wrapper">
-
             <!-- Sidebar -->
-            <div class="sidebar navbar-nav" id='sidebar'></div>
+            <div class="sidebar navbar-na" id='sidebar'></div>
 
             <div id="content-wrapper">
 
                 <div class="container-fluid">
 
                     <!-- Breadcrumbs-->
-                    <ol class="breadcrumb" id="breadcrumb">
+                    <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="index">Dashboard</a>
                         </li>
-                        <li class="breadcrumb-item active">Search</li>
+                        <li class="breadcrumb-item active" id="page_name">공략</li>
                     </ol>
 
-                    <!-- Page Content -->
-                    <h1 id="search_keyword">Search</h1>
-                    <hr>
-
-                    <div>
+                    <!-- DataTables -->
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <i class="fas fa-table"></i>
+                            <span id="table_name">Data Table</span>
+                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>Name</th>
-                                            <th>start</th>
-                                            <th>end</th>
+                                            <th>writer</th>
+                                            <th>memo</th>
                                         </tr>
                                     </thead>
                                     <tbody id="sc_list">
+                                        {% for hint in hintlist %}
                                         <tr>
-                                            <td colspan='4'>No Data</td>
+                                            <td>
+                                                <a href={{hint.link}}>{{hint.name}}</a>
+                                            </td>
+                                            <td>
+                                                <a href={{hint.link}}>{{hint.writer}}</a>
+                                            </td>
+                                            <td>
+                                                <a href={{hint.memo}}>{{hint.memo}}</a>
+                                            </td>
                                         </tr>
+                                        {% endfor %}
                                     </tbody>
                                 </table>
                             </div>
                         </div>
+                        <!-- <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div> -->
                     </div>
 
-
+                    <!-- <p class="small text-center text-muted my-5">
+                        <em>More table examples coming soon...</em>
+                    </p> -->
 
                 </div>
                 <!-- /.container-fluid -->
@@ -110,80 +123,28 @@
         <a class="scroll-to-top rounded" href="#page-top">
             <i class="fas fa-angle-up"></i>
         </a>
+        </div>
         <script src="/static/vendor/jquery/jquery.min.js"></script>
         <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="/static/vendor/datatables/jquery.dataTables.js"></script>
+        <script src="/static/vendor/datatables/dataTables.bootstrap4.js"></script>
+
         <script src="/static/js/sb-admin.min.js"></script>
+        <script src="/static/js/datatables.js"></script>
         <script src="/static/js/addition.js"></script>
         <script>
             $(function () {
                 $("#regist_new").load("/static/extention_html/singUpModal.html");
+                $("#Login").load("/static/extention_html/log-inModal.html");
                 $("#footer").load("/static/extention_html/footer.html");
-                $("#Nav").load("/static/extention_html/navbar.html");
-                $("#sidebar").load("/static/extention_html/sidebar.html", function () {
-                    document.getElementById('search_lit').className += ' active'
+                $("#Nav").load("/static/e7html/navbar.html");
+                $("#sidebar").load("/static/e7html/sidebar.html", function () {
+                    document.getElementById("tip_lit").className += " active";
                 });
                 $("#modalDialog").load("/static/extention_html/modal_dialog.html");
-                $("#Login").load("/static/extention_html/log-inModal.html");
             });
-            var search_str = null
-
-
-            function getVariableHandler() {
-                kq = "{{ kq }}";
-                if (kq != null && kq != 'None') {
-                    search_str = kq.replace("+", " ");
-                    console.log(search_str);
-                    //getSearchData('LOL', search_str)
-                    document.title = document.title + " : " + search_str
-                    var search_s = document.getElementById("search_keyword")
-                    search_s.innerText = "Search : " + search_str
-                    var breads = document.getElementById("breadcrumb")
-                    breads.innerHTML += "<li class='breadcrumb-item active'>" + search_str + "</li>"
-                }
-            }
-
-            function getSearchData() {
-                var req = new XMLHttpRequest()
-                req.open("GET", "http://localhost:8080/api/search/" + arguments[0] + "/" + arguments[1]);
-                req.addEventListener("load", function () {
-                    if (req.status === 200) {
-                        console.log("GetList Get success!");
-                        var json = JSON.parse(req.responseText);
-                        console.log(json);
-                        var data = json.data;
-                        writeList(arguments[0], data);
-                    } else {
-                        writeList();
-                        console.error("NONE");
-                    }
-                });
-                req.send(null);
-            }
-
-            function writeList() {
-
-                if (arguments.length != 0) {
-
-                    if (arguments[1].length == 0) {
-                        return
-                    }
-                    var table = document.getElementById("sc_list")
-                    table.innerHTML = ""
-                    var cur;
-                    for (var i = 0; i < arguments[1].length; i++) {
-                        cur = arguments[1][i]
-                        table.innerHTML += "<tr onclick=viewDialog(\"" + cur._id +
-                            "\",'LOL')><td><a href='javascript:;'>" + cur.name + "</a></td><td>" + cur.start +
-                            "</td><td>" + cur.end + "</td></a></tr>"
-                    }
-                }
-            }
-            getVariableHandler()
+            var tableName;
         </script>
-
-
     </body>
-
 
 </html>

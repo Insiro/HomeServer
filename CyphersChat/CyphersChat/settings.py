@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_swagger',
     'cyphers.apps.CyphersConfig',
-    'home.apps.HomeConfig'
+    'home.apps.HomeConfig',
+    'epic7.apps.Epic7Config'
 ]
 
 MIDDLEWARE = [
