@@ -8,9 +8,9 @@ def search(request):
     kq = request.GET.get('kq')
     return render(request, 'search.html',{'kq':kq})
 def blank(request):
-    return render(request, 'blank.html')
+    return render(request, 'about.html')
 def detail(request):
-    return render(request, 'detail.html')
+    return render(request, 'about.html')
 def _404(request):
     return render(request, '404.html')
 def table(request):
