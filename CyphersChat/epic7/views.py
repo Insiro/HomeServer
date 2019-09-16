@@ -3,8 +3,8 @@ from epic7.models import tips, notic
 # Create your views here.
 def index(request):
     lit = notic.objects.all()
-    notics = {'notic':lit}
-    return  render(request, 'e7index.html', notics)
+    imporlit = tips.objects.filter(important = True)
+    return  render(request, 'e7index.html', {'notic':lit, 'hints':imporlit})
 def tiplit(request):
     lit = tips.objects.all()
     hitlist = {'hintlist':lit}

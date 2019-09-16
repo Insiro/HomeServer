@@ -71,16 +71,33 @@
                         <div class="card-body">
                             <ul>
                                 {% for not in notics %}
-                                <li onclick="viewDialog()">
+                                <li onclick="viewDialog('notic','{{not.id}}' )">
                                     {{not.name}}
                                 </li>
                                 {% endfor %}
                             </ul>
                         </div>
                     </div>
-
                     <!-- Icon Cards-->
                     <div class="row">
+                        {%for imp in hints %}
+                        <div class="col-xl-3 col-sm-6 mb-3">
+                            <div class="card text-white bg-blue2 o-hidden h-100">
+                                <div class="card-body">
+                                    <div class="card-body-icon">
+                                    </div>
+                                    <div class="mr-5">{{imp.name}}</div>
+                                </div>
+                                <a class="card-footer text-white clearfix small z-1" href="javascript:;"
+                                    onClick="viewDialog('tips','{{imp.id}}' )">
+                                    <span class="float-left"> id : {{imp.id}}</span>
+                                    <span class="float-right">
+                                        <i class="fas fa-angle-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
                         <div class="col-xl-3 col-sm-6 mb-3">
                             <div class="card text-sidegold bg-gold o-hidden h-100">
                                 <div class="card-body">
@@ -179,6 +196,7 @@
                                 </a>
                             </div>
                         </div> -->
+
                         <div class="col-xl-3 col-sm-6 mb-3">
                             <div class="card text-white bg-blue2 o-hidden h-100">
                                 <div class="card-body">
@@ -295,6 +313,7 @@
                 $("#modalDialog").load("/static/extention_html/modal_dialog.html");
                 $("#Login").load("/static/extention_html/log-inModal.html");
             });
+            console.log("{{hints}}")
 
             function writeList() {
                 if (arguments[1].length == 0 || arguments.length < 1) document.getElementById(theGame + "_list")
