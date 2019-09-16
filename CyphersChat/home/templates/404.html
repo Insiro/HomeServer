@@ -1,126 +1,150 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
 
-    <head>
+    <title>Insiro - 404</title>
 
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
+    <!-- Custom fonts for this template-->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.9.0/css/all.css"
+    />
+    <!-- Custom styles for this template-->
+    <link href="{% static 'css/sb-admin.css'%}" rel="stylesheet" />
+    <link href="{% static 'css/addition.css'%}" rel="stylesheet" />
+  </head>
 
-        <title>Insiro - 404</title>
+  <body id="page-top">
+    <div class="modal dia" id="Login"></div>
+    <div class="modal dia" id="regist_new"></div>
+    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+      <a class="navbar-brand mr-1" href="./">Insiro</a>
 
-        <!-- Custom fonts for this template-->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
-        <!-- Custom styles for this template-->
-        <link href="{% static 'css/sb-admin.css'%}" rel="stylesheet">
-        <link href="{% static 'css/addition.css'%}" rel="stylesheet">
-    </head>
-
-    <body id="page-top">
-        <div class="modal dia" id="Login"> </div>
-        <div class="modal dia" id="regist_new"> </div>
-        <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-
-            <a class="navbar-brand mr-1" href="./">Insiro</a>
-
-            <!-- Navbar Search -->
-            <form action="search" class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input type="text" class="form-control" name="kq" placeholder="Search for..." aria-label="Search"
-                        aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
-
-            <!-- Navbar -->
-            <div id='Nav'></div>
-
-        </nav>
-
-        <div id="wrapper">
-
-            <!-- Sidebar -->
-            <div class="sidebar navbar-nav" id='sidebar'></div>
-
-
-            <div id="content-wrapper">
-
-                <div class="container-fluid">
-
-                    <!-- Breadcrumbs-->
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="./">Dashboard</a>
-                        </li>
-                        <li class="breadcrumb-item active">404 Error</li>
-                    </ol>
-
-                    <!-- Page Content -->
-                    <h1 class="display-1">404</h1>
-                    <p class="lead">Page not found. You can
-                        <a href="javascript:history.back()">go back</a> to the previous page, or
-                        <a href="./">return home</a>.</p>
-
-                </div>
-                <!-- /.container-fluid -->
-
-                <!-- Sticky Footer -->
-                <footer class="sticky-footer">
-                    <div id='footer' class="container my-auto"></div>
-                </footer>
-
-            </div>
-            <!-- /.content-wrapper -->
-
+      <!-- Navbar Search -->
+      <form
+        action="search"
+        class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0"
+      >
+        <div class="input-group">
+          <input
+            type="text"
+            class="form-control"
+            name="kq"
+            placeholder="Search for..."
+            aria-label="Search"
+            aria-describedby="basic-addon2"
+          />
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
         </div>
-        <!-- /#wrapper -->
+      </form>
 
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-        </a>
+      <!-- Navbar -->
+      <div id="Nav"></div>
+    </nav>
 
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.html">Logout</a>
-                    </div>
-                </div>
-            </div>
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar navbar-nav" id="sidebar"></div>
+
+      <div id="content-wrapper">
+        <div class="container-fluid">
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="./">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">404 Error</li>
+          </ol>
+
+          <!-- Page Content -->
+          <h1 class="display-1">404</h1>
+          <p class="lead">
+            Page not found. You can
+            <a href="javascript:history.back()">go back</a> to the previous
+            page, or <a href="./">return home</a>.
+          </p>
         </div>
+        <!-- /.container-fluid -->
 
-    <script  src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"  ></script>
-        <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
-        <script src="/static/js/sb-admin.min.js"></script>
-        <script src="/static/js/addition.js"></script>
-        <script>
-            $(document).ready(function () {
-                $("#footer").load("/static/extention_html/footer.html");
-                $("#Nav").load("/static/extention_html/navbar.html");
-                $("#sidebar").load("/static/extention_html/sidebar.html");
-                $("#regist_new").load("/static/extention_html/singUpModal.html");
-                $("#Login").load("/static/extention_html/log-inModal.html");
+        <!-- Sticky Footer -->
+        <footer class="sticky-footer">
+          <div id="footer" class="container my-auto"></div>
+        </footer>
+      </div>
+      <!-- /.content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
 
-            });
-        </script>
-    </body>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
 
+    <!-- Logout Modal-->
+    <div
+      class="modal fade"
+      id="logoutModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button
+              class="close"
+              type="button"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Select "Logout" below if you are ready to end your current session.
+          </div>
+          <div class="modal-footer">
+            <button
+              class="btn btn-secondary"
+              type="button"
+              data-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <a class="btn btn-primary" href="login.html">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/static/js/sb-admin.min.js"></script>
+    <script src="/static/js/addition.js"></script>
+    <script>
+      $(document).ready(function() {
+        $("#footer").load("/static/extention_html/footer.html");
+        $("#Nav").load("/static/extention_html/navbar.html");
+        $("#sidebar").load("/static/extention_html/sidebar.html");
+        $("#regist_new").load("/static/extention_html/singUpModal.html");
+        $("#Login").load("/static/extention_html/log-inModal.html");
+      });
+    </script>
+  </body>
 </html>
