@@ -142,7 +142,7 @@ ol {
 	line-height: normal;
 	cursor: pointer;
 	background-color: transparent;
-	background-image: url("../img/angle-rignt.png");
+	background-image: url("img/angle-rignt.png");
 	background-repeat: no-repeat;
 	background-position: right 23px top 22px;
 }
@@ -154,13 +154,13 @@ ol {
 .site-btn.sb-light {
 	color: #fff;
 	border-color: #fff;
-	background-image: url("../img/angle-rignt-w.png");
+	background-image: url("/static/img/angle-rignt-w.png");
 }
 
 .site-btn.sb-solid-dark {
 	color: #fff;
 	background-color: #323232;
-	background-image: url("../img/angle-rignt-w.png");
+	background-image: url("/static/img/angle-rignt-w.png");
 }
 
 /* Preloder */
@@ -195,12 +195,14 @@ ol {
 		border: 4px solid #f44336;
 		border-left-color: transparent;
 	}
+
 	50% {
 		-webkit-transform: rotate(180deg);
 		transform: rotate(180deg);
 		border: 4px solid #673ab7;
 		border-left-color: transparent;
 	}
+
 	100% {
 		-webkit-transform: rotate(360deg);
 		transform: rotate(360deg);
@@ -215,11 +217,13 @@ ol {
 		border: 4px solid #f44336;
 		border-left-color: transparent;
 	}
+
 	50% {
 		-webkit-transform: rotate(180deg);
 		border: 4px solid #673ab7;
 		border-left-color: transparent;
 	}
+
 	100% {
 		-webkit-transform: rotate(360deg);
 		border: 4px solid #f44336;
@@ -581,7 +585,7 @@ ol {
 	color: #1b1c2e;
 	padding-top: 5px;
 	background-color: #fff;
-	background-image: url("../img/angle-rignt.png");
+	background-image: url("/static/img/angle-rignt.png");
 	background-repeat: no-repeat;
 	background-position: center bottom 13px;
 }
@@ -1223,6 +1227,7 @@ ol {
 	.gallery-single-slider {
 		margin-bottom: 50px;
 	}
+
 	.gallery-single-slider .owl-nav {
 		position: relative;
 		left: 0;
@@ -1242,25 +1247,32 @@ ol {
 		padding-left: 30px;
 		padding-right: 60px;
 	}
+
 	.about-text {
 		padding-right: 0;
 	}
+
 	.gallery-single-text {
 		padding: 0 30px;
 	}
+
 	.contact-text {
 		padding-left: 40px;
 		padding-right: 30px;
 	}
+
 	.map-warp {
 		padding-left: 0;
 	}
+
 	.map-warp iframe {
 		height: 600px;
 	}
+
 	.elements-page {
 		padding: 200px 40px 0;
 	}
+
 	.element .icon-box {
 		padding-right: 0px;
 	}
@@ -1269,29 +1281,37 @@ ol {
 /* Medium screen : 992px. */
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
+
 	.header-section,
 	.copyright {
 		width: 300px;
 	}
+
 	.main-warp {
 		padding-left: 300px;
 	}
+
 	.about-image {
 		margin-bottom: 100px;
 		margin-left: 15px;
 	}
+
 	.gallery-single-slider {
 		padding: 50px 40px 0;
 	}
+
 	.gallery-single-text {
 		padding: 75px 50 0;
 	}
+
 	.gallery-item {
 		width: 50%;
 	}
+
 	.blog-post .blog-thumb {
 		height: 300px;
 	}
+
 	.contact-text {
 		padding-left: 30px;
 		padding-right: 30px;
@@ -1309,14 +1329,17 @@ ol {
 		display: -ms-flexbox;
 		display: flex;
 	}
+
 	.spacial-controls .search-switch {
 		width: 50%;
 	}
+
 	.nav-switch-warp {
 		display: block;
 		padding-top: 25px;
 		padding-left: 30px;
 	}
+
 	.header-section {
 		left: -150%;
 		opacity: 0;
@@ -1324,69 +1347,88 @@ ol {
 		width: 100%;
 		overflow-y: auto;
 	}
+
 	.header-section.active {
 		left: 0;
 		opacity: 1;
 		visibility: visible;
 	}
+
 	.header-section.active .header-close {
 		position: fixed;
 	}
+
 	.header-close {
 		display: block;
 	}
+
 	.main-warp {
 		padding-left: 0;
 	}
+
 	.home-page {
 		z-index: 1;
 	}
+
 	.next-slide-show {
 		display: none;
 	}
+
 	.slider-item {
 		-webkit-box-pack: center;
 		-ms-flex-pack: center;
 		justify-content: center;
 	}
+
 	.slider-item .si-text-box {
 		width: 495px;
 		padding: 90px 30px 100px;
 		text-align: center;
 	}
+
 	.hero-slider .owl-nav {
 		left: 0;
 	}
+
 	.hero-slider .owl-nav button.owl-next,
 	.hero-slider .owl-nav button.owl-prev {
 		width: 90px;
 		height: 60px;
 	}
+
 	.about-image {
 		margin-bottom: 100px;
 		margin-left: 15px;
 	}
+
 	.gallery-single-slider {
 		padding: 50px 40px 0;
 	}
+
 	.gallery-single-text {
 		padding: 75px 50 0;
 	}
+
 	.portfolio-filter {
 		padding-right: 215px;
 	}
+
 	.portfolio-filter li {
 		margin-right: 30px;
 	}
+
 	.gallery-item {
 		width: 50%;
 	}
+
 	.blog-warp {
 		padding-right: 50px;
 	}
+
 	.blog-post .blog-thumb {
 		height: 300px;
 	}
+
 	.contact-text {
 		padding-left: 30px;
 		padding-right: 30px;
@@ -1404,14 +1446,17 @@ ol {
 		display: -ms-flexbox;
 		display: flex;
 	}
+
 	.spacial-controls .search-switch {
 		width: 50%;
 		padding-top: 18px;
 	}
+
 	.nav-switch-warp,
 	.header-close {
 		display: block;
 	}
+
 	.header-section {
 		left: -150%;
 		opacity: 0;
@@ -1419,20 +1464,25 @@ ol {
 		width: 100%;
 		overflow-y: auto;
 	}
+
 	.header-section.active {
 		left: 0;
 		opacity: 1;
 		visibility: visible;
 	}
+
 	.header-section.active .header-close {
 		position: fixed;
 	}
+
 	.header-warp {
 		margin-bottom: 50px;
 	}
+
 	.social-links {
 		width: auto;
 	}
+
 	.social-links a {
 		display: inline-block;
 		-webkit-transform: rotate(0);
@@ -1440,73 +1490,93 @@ ol {
 		transform: rotate(0);
 		margin-right: 15px;
 	}
+
 	.social-text {
 		display: none;
 	}
+
 	.main-warp {
 		padding-left: 0;
 	}
+
 	.home-page {
 		z-index: 1;
 	}
+
 	.next-slide-show {
 		display: none;
 	}
+
 	.slider-item {
 		-webkit-box-pack: center;
 		-ms-flex-pack: center;
 		justify-content: center;
 	}
+
 	.slider-item .si-text-box {
 		width: 495px;
 		padding: 90px 30px 100px;
 		text-align: center;
 	}
+
 	.hero-slider .owl-nav {
 		left: 0;
 	}
+
 	.hero-slider .owl-nav button.owl-next,
 	.hero-slider .owl-nav button.owl-prev {
 		width: 90px;
 		height: 60px;
 	}
+
 	.slider-item .si-text-box {
 		width: 490px;
 		padding: 90px 30px 100px;
 		text-align: center;
 	}
+
 	.about-image {
 		margin-bottom: 100px;
 		margin-left: 15px;
 	}
+
 	.gallery-single-slider {
 		padding: 50px 40px 0;
 	}
+
 	.gallery-single-text {
 		padding: 75px 50 0;
 	}
+
 	.portfolio-filter {
 		padding-right: 160px;
 	}
+
 	.portfolio-filter li {
 		margin-right: 30px;
 	}
+
 	.gallery-item {
 		width: 50%;
 	}
+
 	.blog-page {
 		padding: 100px 50px 0;
 	}
+
 	.blog-warp {
 		padding-right: 20px;
 	}
+
 	.blog-post .blog-thumb {
 		height: 300px;
 	}
+
 	.contact-text {
 		padding-left: 30px;
 		padding-right: 30px;
 	}
+
 	.search-moderl-form input {
 		width: 100%;
 	}
@@ -1526,26 +1596,33 @@ ol {
 	.slider-item {
 		padding: 0 15px;
 	}
+
 	.slider-item .si-text-box {
 		width: 100%;
 		padding: 10px 30px 20px;
 	}
+
 	.slider-item .si-text-box h2 {
 		margin-bottom: 10px;
 		font-size: 38px;
 	}
+
 	.slider-item .si-text-box p {
 		margin-bottom: 10px;
 	}
+
 	#snh-1 {
 		display: none;
 	}
+
 	.portfolio-filter {
 		padding: 80px 30px 20px;
 	}
+
 	.gallery-item {
 		width: 100%;
 	}
+
 	.blog-page {
 		padding: 100px 15px 0;
 	}

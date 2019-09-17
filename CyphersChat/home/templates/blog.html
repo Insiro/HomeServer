@@ -1,5 +1,7 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="zxx">
+
   <head>
     <title>Insiro</title>
     <meta charset="UTF-8" />
@@ -10,26 +12,18 @@
     <!-- <link href="img/favicon.ico" rel="shortcut icon" /> -->
 
     <!-- Google Font -->
-    <link
-      href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i" rel="stylesheet" />
 
     <!-- Stylesheets -->
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link rel="stylesheet" href="css/owl.carousel.min.css" />
-    <link rel="stylesheet" href="css/animate.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/animate.css'%}" />
 
     <!-- Main Stylesheets -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
   </head>
+
   <body>
     <!-- Page Preloder -->
     <div id="preloder">
@@ -38,7 +32,7 @@
 
     <!-- Top right elements -->
     <div class="spacial-controls">
-      <div class="search-switch"><img src="img/search-icon.png" alt="" /></div>
+      <div class="search-switch"><img src="/static/img/search-icon.png" alt="" /></div>
       <div class="nav-switch-warp">
         <div class="nav-switch">
           <div class="ns-bar"></div>
@@ -50,33 +44,7 @@
     <div class="main-warp">
       <!-- header section -->
       <header class="header-section">
-        <div class="header-close">
-          <i class="fa fa-times"></i>
-        </div>
-        <div class="header-warp">
-          <a href="" class="site-logo">
-            <img src="./img/logo.png" alt="" />
-          </a>
-          <img src="img/menu-icon.png" alt="" class="menu-icon" />
-          <ul class="main-menu">
-            <li><a href="./home.html">Home</a></li>
-            <li><a href="./gallery.html">Gallery</a></li>
-            <li><a href="./gallery-single.html">Single gallery</a></li>
-            <li class="active"><a href="./blog.html">Blog</a></li>
-            <li><a href="./contact.html">Contact</a></li>
-          </ul>
-          <div class="social-links-warp">
-            <div class="social-links">
-              <a href="mailto:leeon@insiro.me"><i class="fa fa-at"></i></a>
-              <!-- <a href=""><i class="fa fa-dribbble"></i></a>
-              <a href=""><i class="fa fa-twitter"></i></a>
-              <a href=""><i class="fa fa-facebook"></i></a>
-              <a href=""><i class="fa fa-pinterest"></i></a>-->
-            </div>
-            <div class="social-text">Contact</div>
-          </div>
-        </div>
-        <div class="copyright">Colorlib 2018 @ All rights reserved</div>
+        <div id="side-bar"></div>
       </header>
       <!-- header section end -->
 
@@ -91,20 +59,14 @@
                   <span>Dec, ‘18</span>
                 </div>
               </div>
-              <h2 class="post-title">The best tips & tricks</h2>
+              <h2 class="post-title">title</h2>
               <div class="post-metas">
-                <div class="post-meta">By Michael Smith</div>
+                <div class="post-meta">By Insiro</div>
                 |
                 <div class="post-meta">In photography</div>
               </div>
               <p>
-                Ut pellentesque auctor lorem, at maximus lacus faucibus nec.
-                Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                Mauris auctor nunc non nulla euismod consequat. Pellentesque non
-                mattis nulla. Fusce quis tempor risus, non elemen tum dui.
-                Curabitur et mattis ex, a ultrices. Ut pellentesque auctor
-                lorem, at maximus lacus faucibus nec. Interdum et malesuada
-                fames ac ante ipsum primis in faucibus.
+                contents
               </p>
             </div>
             <div class="blog-post">
@@ -114,20 +76,14 @@
                   <span>Dec, ‘18</span>
                 </div>
               </div>
-              <h2 class="post-title">The best tips & tricks</h2>
+              <h2 class="post-title">title</h2>
               <div class="post-metas">
-                <div class="post-meta">By Michael Smith</div>
+                <div class="post-meta">By Insiro</div>
                 |
                 <div class="post-meta">In photography</div>
               </div>
               <p>
-                Ut pellentesque auctor lorem, at maximus lacus faucibus nec.
-                Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                Mauris auctor nunc non nulla euismod consequat. Pellentesque non
-                mattis nulla. Fusce quis tempor risus, non elemen tum dui.
-                Curabitur et mattis ex, a ultrices. Ut pellentesque auctor
-                lorem, at maximus lacus faucibus nec. Interdum et malesuada
-                fames ac ante ipsum primis in faucibus.
+                contents
               </p>
             </div>
           </div>
@@ -140,8 +96,8 @@
     <div class="search-model">
       <div class="h-100 d-flex align-items-center justify-content-center">
         <div class="search-close-switch">x</div>
-        <form class="search-moderl-form">
-          <input type="text" id="search-input" placeholder="Search here....." />
+        <form action="search" class="search-moderl-form">
+          <input type="text" name="kq" id="search-input" placeholder="Search here....." />
         </form>
       </div>
     </div>
@@ -150,11 +106,19 @@
     <!--====== Javascripts & Jquery ======-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.nicescroll.min.js"></script>
-    <script src="js/isotope.pkgd.min.js"></script>
-    <script src="js/imagesloaded.pkgd.min.js"></script>
-    <script src="js/circle-progress.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="/static/js/owl.carousel.min.js"></script>
+    <script src="/static/js/jquery.nicescroll.min.js"></script>
+    <script src="/static/js/isotope.pkgd.min.js"></script>
+    <script src="/static/js/imagesloaded.pkgd.min.js"></script>
+    <script src="/static/js/circle-progress.min.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script>
+      $(function () {
+        $("#side-bar").load("/static/extend_html/side-bar.html", function () {
+          document.getElementById("side_blog").className = "active"
+        });
+      });
+    </script>
   </body>
+
 </html>

@@ -1,13 +1,11 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
     <meta http-equiv="Access-Control-Allow-Origin" content="*" />
@@ -15,10 +13,7 @@
     <title>무한 기사단- Home</title>
 
     <!-- Custom fonts for this template-->
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.9.0/css/all.css"
-    />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" />
     <!-- Custom styles for this template-->
     <link href="{% static 'css/sb-admin.css'%}" rel="stylesheet" />
     <link href="{% static 'css/addition.css'%}" rel="stylesheet" />
@@ -33,19 +28,10 @@
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
       <a class="navbar-brand mr-1" href=".">무한기사단</a>
       <!-- Navbar Search -->
-      <form
-        action="search"
-        class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0"
-      >
+      <form action="search" class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <div class="input-group">
-          <input
-            type="text"
-            class="form-control"
-            name="kq"
-            placeholder="Search for..."
-            aria-label="Search"
-            aria-describedby="basic-addon2"
-          />
+          <input type="text" class="form-control" name="kq" placeholder="Search for..." aria-label="Search"
+            aria-describedby="basic-addon2" />
           <div class="input-group-append">
             <button class="btn btn-primary" type="submit">
               <i class="fas fa-search"></i>
@@ -94,11 +80,8 @@
                   <div class="card-body-icon"></div>
                   <div class="mr-5">{{ imp.name }}</div>
                 </div>
-                <a
-                  class="card-footer text-white clearfix small z-1"
-                  href="javascript:;"
-                  onClick="viewDialog('tips','{{ imp.id }}' )"
-                >
+                <a class="card-footer text-white clearfix small z-1" href="javascript:;"
+                  onClick="viewDialog('tips','{{ imp.id }}' )">
                   <span class="float-left"> id : {{ imp.id }}</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -118,11 +101,7 @@
                   <div class="mr-5">gold</div>
                 </div>
                 <ul id="LOL_list" class="list-game list-sidegold"></ul>
-                <a
-                  class="card-footer text-sidegold clearfix small z-1"
-                  href="javascript:;"
-                  onClick="go_table()"
-                >
+                <a class="card-footer text-sidegold clearfix small z-1" href="javascript:;" onClick="go_table()">
                   <span class="float-left">View all Contests</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -141,11 +120,7 @@
                     <a href="javascript:;" onclick="viewDialog()"> items</a>
                   </li>
                 </ul>
-                <a
-                  class="card-footer text-sideOcher clearfix small z-1"
-                  href="javascript:;"
-                  onClick="go_table()"
-                >
+                <a class="card-footer text-sideOcher clearfix small z-1" href="javascript:;" onClick="go_table()">
                   <span class="float-left">View all Contests</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -165,11 +140,7 @@
                     <a href="javascript:;" onclick="viewDialog()"> items</a>
                   </li>
                 </ul>
-                <a
-                  class="card-footer text-sideorange clearfix small z-1"
-                  href="javascript:;"
-                  onClick="go_table('')"
-                >
+                <a class="card-footer text-sideorange clearfix small z-1" href="javascript:;" onClick="go_table('')">
                   <span class="float-left">View all Contests</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -228,11 +199,7 @@
                     <a href="javascript:;" onclick="viewDialog()"> items</a>
                   </li>
                 </ul>
-                <a
-                  class="card-footer text-white clearfix small z-1"
-                  href="javascript:;"
-                  onClick="go_table()"
-                >
+                <a class="card-footer text-white clearfix small z-1" href="javascript:;" onClick="go_table()">
                   <span class="float-left">View all Contests</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -251,11 +218,7 @@
                     <a href="javascript:;" onclick="viewDialog()"> items</a>
                   </li>
                 </ul>
-                <a
-                  class="card-footer text-white clearfix small z-1"
-                  href="javascript:;"
-                  onClick="go_table()"
-                >
+                <a class="card-footer text-white clearfix small z-1" href="javascript:;" onClick="go_table()">
                   <span class="float-left">View all Contests</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -274,11 +237,7 @@
                     <a href="javascript:;" onclick="viewDialog()"> items</a>
                   </li>
                 </ul>
-                <a
-                  class="card-footer text-white clearfix small z-1"
-                  href="javascript:;"
-                  onClick="go_table()"
-                >
+                <a class="card-footer text-white clearfix small z-1" href="javascript:;" onClick="go_table()">
                   <span class="float-left">View all Contests</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -329,10 +288,10 @@
       // } else {
       //     console.log('Not logged in')
       // }
-      $(function() {
+      $(function () {
         $("#footer").load("/static/extention_html/footer.html");
         $("#Nav").load("/static/e7html/navbar.html");
-        $("#sidebar").load("/static/e7html/sidebar.html", function() {
+        $("#sidebar").load("/static/e7html/sidebar.html", function () {
           document.getElementById("dash_lit").className += " active";
         });
         $("#regist_new").load("/static/extention_html/singUpModal.html");
@@ -344,7 +303,7 @@
       function writeList() {
         if (arguments[1].length == 0 || arguments.length < 1)
           document.getElementById(theGame + "_list").innerHTML +=
-            "<li> No data </li>";
+          "<li> No data </li>";
         else {
           for (var i = 0; i < arguments[1].length; i++) {
             document.getElementById(arguments[0] + "_list").innerHTML +=
@@ -353,9 +312,9 @@
               '", "' +
               arguments[0] +
               "\")' href='javascript:;'>" +
-              (arguments[1][i].name.length > 25
-                ? arguments[1][i].name.substring(0, 23) + "..."
-                : arguments[1][i].name) +
+              (arguments[1][i].name.length > 25 ?
+                arguments[1][i].name.substring(0, 23) + "..." :
+                arguments[1][i].name) +
               "</a></li>";
           }
         }
@@ -369,4 +328,5 @@
       // LOGIN
     </script>
   </body>
+
 </html>

@@ -16,3 +16,11 @@ def _404(request):
 def table(request):
     table = request.GET.get('table')
     return render(request, 'Tables.html',{'kq':table})
+def project(request):
+    return render(request, 'project.html')
+def contact(request):
+    return render(request, 'contact.html')
+def singleProject(request):
+    return render(request, 'singleProject.html')
+def blog(request):
+    return render(request, 'blog.html')

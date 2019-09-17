@@ -1,5 +1,7 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="zxx">
+
   <head>
     <title>Insiro</title>
     <meta charset="UTF-8" />
@@ -10,39 +12,22 @@
     <!-- <link href="img/favicon.ico" rel="shortcut icon" /> -->
 
     <!-- Google Font -->
-    <link
-      href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i" rel="stylesheet" />
 
     <!-- Stylesheets -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-
-    <link rel="stylesheet" href="css/owl.carousel.min.css" />
-    <link rel="stylesheet" href="css/animate.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/animate.css'%}" />
 
     <!-- Main Stylesheets -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
   </head>
+
   <body>
     <!-- Page Preloder -->
     <div id="preloder">
       <div class="loader"></div>
     </div>
-
-    <!-- Top right elements -->
-    <div class="spacial-controls">
-      <div class="search-switch"><img src="img/search-icon.png" alt="" /></div>
-      <div class="nav-switch-warp">
-        <div class="nav-switch">
-          <div class="ns-bar"></div>
-        </div>
-      </div>
-    </div>
-    <!-- Top right elements end -->
 
     <div class="main-warp">
       <!-- header section -->
@@ -54,11 +39,8 @@
       <!-- Page section -->
       <div class="page-section home-page">
         <div class="hero-slider owl-carousel">
-          <div
-            class="slider-item d-flex align-items-center set-bg"
-            data-setbg="img/slider-bg-1.jpg"
-            data-hash="slide-1"
-          >
+          <div class="slider-item d-flex align-items-center set-bg" data-setbg="img/slider-bg-1.jpg"
+            data-hash="slide-1">
             <div class="si-text-box">
               <span>Photography</span>
               <h2>Project No. 1</h2>
@@ -71,18 +53,12 @@
               </p>
               <a href="" class="site-btn">Read More</a>
             </div>
-            <div
-              class="next-slide-show set-bg"
-              data-setbg="img/slider-bg-2.jpg"
-            >
+            <div class="next-slide-show set-bg" data-setbg="img/slider-bg-2.jpg">
               <a href="#slide-2" class="ns-btn">Next</a>
             </div>
           </div>
-          <div
-            class="slider-item d-flex align-items-center set-bg"
-            data-setbg="img/slider-bg-2.jpg"
-            data-hash="slide-2"
-          >
+          <div class="slider-item d-flex align-items-center set-bg" data-setbg="img/slider-bg-2.jpg"
+            data-hash="slide-2">
             <div class="si-text-box">
               <span>Photography</span>
               <h2>Project No. 2</h2>
@@ -95,10 +71,7 @@
               </p>
               <a href="" class="site-btn">Read More</a>
             </div>
-            <div
-              class="next-slide-show set-bg"
-              data-setbg="img/slider-bg-1.jpg"
-            >
+            <div class="next-slide-show set-bg" data-setbg="img/slider-bg-1.jpg">
               <a href="#slide-1" class="ns-btn">Next</a>
             </div>
           </div>
@@ -108,30 +81,22 @@
       <!-- Page section end-->
     </div>
 
-    <!-- Search model -->
-    <div class="search-model">
-      <div class="h-100 d-flex align-items-center justify-content-center">
-        <div class="search-close-switch">x</div>
-        <form class="search-moderl-form">
-          <input type="text" id="search-input" placeholder="Search here....." />
-        </form>
-      </div>
-    </div>
-    <!-- Search model end -->
-
     <!--====== Javascripts & Jquery ======-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.nicescroll.min.js"></script>
-    <script src="js/isotope.pkgd.min.js"></script>
-    <script src="js/imagesloaded.pkgd.min.js"></script>
-    <script src="js/circle-progress.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="/static/js/owl.carousel.min.js"></script>
+    <script src="/static/js/jquery.nicescroll.min.js"></script>
+    <script src="/static/js/isotope.pkgd.min.js"></script>
+    <script src="/static/js/imagesloaded.pkgd.min.js"></script>
+    <script src="/static/js/circle-progress.min.js"></script>
+    <script src="/static/js/main.js"></script>
     <script>
-      $(function() {
-        $("#side-bar").load("side-bar.html");
+      $(function () {
+        $("#side-bar").load("/static/extend_html/side-bar.html", function () {
+          document.getElementById("side_home").className = "active"
+        });
       });
     </script>
   </body>
+
 </html>
