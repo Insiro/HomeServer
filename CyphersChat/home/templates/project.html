@@ -44,6 +44,9 @@
     <div class="main-warp">
       <!-- header section -->
       <header class="header-section">
+        <div class="header-close">
+          <i class="fa fa-times"></i>
+        </div>
         <div id="side-bar"></div>
       </header>
       <!-- header section end -->
@@ -52,11 +55,21 @@
       <div class="page-section gallery-page">
         <ul class="portfolio-filter">
           <li class="filter all active" data-filter="*">All</li>
-          <li class="filter" data-filter=".Apps">Applicaton </li>
-          <li class="filter" data-filter=".AI">A.I.</li>
-          <li class="filter" data-filter=".addOn">Add-on</li>
-          <li class="filter" data-filter=".3dmodel">3d Model</li>
+          {% for kates in kate %}
+          <li class="filter" data-filter=".kate-{{kates.id}}">{{kates.name}} </li>
+          {% endfor %}
         </ul>
+        {% for prl in projectlist %}
+        <div class="portfolio-gallery">
+          <div class="gallery-item kate-{{prl.kate}}" style="text-align:center">
+            <h3>{{prl.name}}</h3>
+            <img src="{{prl.icon}}" alt="" />
+            <div class="hover-links">
+              <a href="" class="site-btn sb-light">about</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
         <div class="portfolio-gallery">
           <div class="gallery-item apps">
             <img src="img/gallery/1.jpg" alt="" />
@@ -111,7 +124,7 @@
     <!-- Search model end -->
 
     <!--====== Javascripts & Jquery ======-->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="/static/js/owl.carousel.min.js"></script>
     <script src="/static/js/jquery.nicescroll.min.js"></script>

@@ -1,4 +1,4 @@
-var hostname = 'http://localhost:8080/api/'
+var hostname = 'https://localhost:8080/api/'
 
 function go_table() {
     if (arguments.length < 1) {

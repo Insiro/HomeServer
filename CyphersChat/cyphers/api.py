@@ -5,7 +5,7 @@ import json
 from bs4 import BeautifulSoup
 # Create your views here.
 
-hostname = 'http://cyphers.nexon.com'
+hostname = 'https://cyphers.nexon.com'
 apikey = '&apikey=UrGRg0ai58uj7J1GYFjy1ZfU9kzxBHY5'
 apiUrl = 'https://api.neople.co.kr/cy/'
 status = 0
@@ -50,7 +50,7 @@ def getuser_id(name):
 def charRank(requests, charname):
     if charname not in charactor.keys():
         return None
-    Url = 'http://cyphers.nexon.com/cyphers/article/ranking/charac/'+str(season)+'/' + \
+    Url = 'https://cyphers.nexon.com/cyphers/article/ranking/charac/'+str(season)+'/' + \
         charactor.get(charname) + '/win/day/1'
 
     req = reqs.get(Url)
@@ -70,7 +70,7 @@ def charRank(requests, charname):
 
 def todayCyphers(requests):
     global hostname
-    html = reqs.get('http://cyphers.nexon.com/cyphers/article/today2/1').text
+    html = reqs.get('https://cyphers.nexon.com/cyphers/article/today2/1').text
     soup = BeautifulSoup(html, 'html.parser')
     today = soup.find('div', class_='today_box')
     data = list()
