@@ -9,7 +9,7 @@ class projects(models.Model):
     name =models.CharField(max_length=200)     
     kate = models.ForeignKey(Kategorie, on_delete = models.SET_NULL, null=True)
     context=models.TextField(null=True, blank = True)
-    icon = models.ImageField(upload_to="image",null=True,blank=True)
+    icon = models.ImageField(upload_to="icon",null=True,blank=True)
     date= models.DateField(null=True,blank=True)
     def __str__(self):
         return self.name
