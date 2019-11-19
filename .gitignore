@@ -2,3 +2,6 @@
 tet.*
 __test.*
 nohup.out
+media/
+*/media
+*/CyphersChat/static/

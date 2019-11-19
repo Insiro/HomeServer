@@ -27,6 +27,7 @@ urlpatterns = [
     path('api/', cyphers.api.api, name='api'),
     path('', home.views.index),
     path('index', home.views.index),
+    path('info',home.views.info),
     path('Tables', home.views.table),
     path('project', home.views.project),
     path('detail', home.views.detail),

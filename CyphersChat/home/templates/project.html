@@ -61,9 +61,11 @@
         </ul>
         {% for prl in projectlist %}
         <div class="portfolio-gallery">
-          <div class="gallery-item kate-{{prl.kate}}" style="text-align:center">
+          <div class="gallery-item kate-{{prl.kate.id}}" style="text-align:center">
             <h3>{{prl.name}}</h3>
-            <img src="{{prl.icon}}" alt="" />
+	    {% if prl.icon %}
+            <img src="{{prl.icon.url}}" alt="" />
+	    {% endif %}
             <div class="hover-links">
               <a href="" class="site-btn sb-light">about</a>
             </div>
@@ -71,38 +73,9 @@
         </div>
         {% endfor %}
         <div class="portfolio-gallery">
-          <div class="gallery-item apps">
+          <div class="gallery-item kate-1" style="text-align:center">
+            <h3>test 1</h3>
             <img src="img/gallery/1.jpg" alt="" />
-            <div class="hover-links">
-              <a href="" class="site-btn sb-light">Next</a>
-            </div>
-          </div>
-          <div class="gallery-item AI">
-            <img src="img/gallery/2.jpg" alt="" />
-            <div class="hover-links">
-              <a href="" class="site-btn sb-light">Next</a>
-            </div>
-          </div>
-          <div class="gallery-item addOn">
-            <img src="img/gallery/3.jpg" alt="" />
-            <div class="hover-links">
-              <a href="" class="site-btn sb-light">Next</a>
-            </div>
-          </div>
-          <div class="gallery-item 3dmodel">
-            <img src="img/gallery/5.jpg" alt="" />
-            <div class="hover-links">
-              <a href="" class="site-btn sb-light">Next</a>
-            </div>
-          </div>
-          <div class="gallery-item apps">
-            <img src="img/gallery/6.jpg" alt="" />
-            <div class="hover-links">
-              <a href="" class="site-btn sb-light">Next</a>
-            </div>
-          </div>
-          <div class="gallery-item AI">
-            <img src="img/gallery/4.jpg" alt="" />
             <div class="hover-links">
               <a href="" class="site-btn sb-light">Next</a>
             </div>
