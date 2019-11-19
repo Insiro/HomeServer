@@ -20,8 +20,8 @@
       type="text/css"
     />
     <!-- Custom styles for this template-->
-    <link href="{% static 'css/sb-admin.css'%}" rel="stylesheet" />
-    <link href="{% static 'css/addition.css'%}" rel="stylesheet" />
+    <link href="{% static 'epic/css/sb-admin.css'%}" rel="stylesheet" />
+    <link href="{% static 'epic/css/addition.css'%}" rel="stylesheet" />
   </head>
 
   <body id="page-top">
@@ -119,19 +119,19 @@
     </a>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-    <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="/static/js/sb-admin.min.js"></script>
-    <script src="/static/js/addition.js"></script>
+    <script src="/static/epic/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/static/epic/js/sb-admin.min.js"></script>
+    <script src="/static/epic/js/addition.js"></script>
     <script>
       $(function() {
-        $("#regist_new").load("/static/extention_html/singUpModal.html");
-        $("#footer").load("/static/extention_html/footer.html");
-        $("#Nav").load("/static/e7html/navbar.html");
-        $("#sidebar").load("/static/e7html/sidebar.html", function() {
+        $("#regist_new").load("/static/epic/extention_html/singUpModal.html");
+        $("#footer").load("/static/epic/extention_html/footer.html");
+        $("#Nav").load("/static/epic/e7html/navbar.html");
+        $("#sidebar").load("/static/epic/e7html/sidebar.html", function() {
           document.getElementById("search_lit").className += " active";
         });
-        $("#modalDialog").load("/static/extention_html/modal_dialog.html");
-        $("#Login").load("/static/extention_html/log-inModal.html");
+        $("#modalDialog").load("/static/epic/extention_html/modal_dialog.html");
+        $("#Login").load("/static/epic/extention_html/log-inModal.html");
       });
       var search_str = null;
 

@@ -17,11 +17,11 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css'%}" />
-    <link rel="stylesheet" href="{% static 'css/animate.css'%}" />
+    <link rel="stylesheet" href="{% static 'home/css/owl.carousel.min.css'%}" />
+    <link rel="stylesheet" href="{% static 'home/css/animate.css'%}" />
 
     <!-- Main Stylesheets -->
-    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
+    <link rel="stylesheet" href="{% static 'home/css/style.css'%}" />
   </head>
 
   <body>
@@ -32,7 +32,7 @@
 
     <!-- Top right elements -->
     <div class="spacial-controls">
-      <div class="search-switch"><img src="/static/img/search-icon.png" alt="" /></div>
+      <div class="search-switch"><img src="/static/home/img/search-icon.png" alt="" /></div>
       <div class="nav-switch-warp">
         <div class="nav-switch">
           <div class="ns-bar"></div>
@@ -109,15 +109,15 @@
     <!--====== Javascripts & Jquery ======-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="/static/js/owl.carousel.min.js"></script>
-    <script src="/static/js/jquery.nicescroll.min.js"></script>
-    <script src="/static/js/isotope.pkgd.min.js"></script>
-    <script src="/static/js/imagesloaded.pkgd.min.js"></script>
-    <script src="/static/js/circle-progress.min.js"></script>
-    <script src="/static/js/main.js"></script>
+    <script src="/static/home/js/owl.carousel.min.js"></script>
+    <script src="/static/home/js/jquery.nicescroll.min.js"></script>
+    <script src="/static/home/js/isotope.pkgd.min.js"></script>
+    <script src="/static/home/js/imagesloaded.pkgd.min.js"></script>
+    <script src="/static/home/js/circle-progress.min.js"></script>
+    <script src="/static/home/js/main.js"></script>
     <script>
       $(function () {
-        $("#side-bar").load("/static/extend_html/side-bar.html", function () {
+        $("#side-bar").load("/static/home/extend_html/side-bar.html", function () {
           document.getElementById("side_blog").className = "active"
         });
       });
