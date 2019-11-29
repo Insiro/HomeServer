@@ -1,10 +1,5 @@
 .vscode/
-tet.*
-__test.*
 nohup.out
 media/
 */media/
-static/
-*/static/*
-*/home/
-*/epic7/
+*/admin/
