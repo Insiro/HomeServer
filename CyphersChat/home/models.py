@@ -16,7 +16,7 @@ class projects(models.Model):
 
 class project_Img(models.Model):
     projects_id = models.ForeignKey(projects,on_delete = models.CASCADE)
-    img = models.ImageField(upload_to="image")
+    img = models.ImageField(upload_to="home/image")
     #img = models.URLField(max_length=1000)
     
 

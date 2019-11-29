@@ -3,5 +3,8 @@ tet.*
 __test.*
 nohup.out
 media/
-*/media
-*/CyphersChat/static/
+*/media/
+static/
+*/static/*
+*/home/
+*/epic7/
