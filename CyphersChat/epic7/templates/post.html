@@ -13,17 +13,14 @@
         <title>무한 기사단 공략</title>
 
         <!-- Custom fonts for this template-->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
-        <!-- Custom styles for this template-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
         <link href="{% static 'epic/css/sb-admin.css'%}" rel="stylesheet">
         <link href="{% static 'epic/css/addition.css'%}" rel="stylesheet">
-        <!-- <link href="{% static 'epic/vendor/datatables/dataTables.bootstrap4.css'%}" rel="stylesheet"> -->
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
- 
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css" />
+
     </head>
 
     <body id="page-top">
-        <div id="BGI" ></div>
 
 
         <!-- dialog -->
@@ -55,6 +52,7 @@
             <div class="sidebar navbar-na" id='sidebar'></div>
 
             <div id="content-wrapper">
+
                 <div class="container-fluid">
 
                     <!-- Breadcrumbs-->
@@ -67,45 +65,20 @@
 
                     <!-- DataTables -->
                     <div class="card mb-3">
-                        <!-- <div class="card-header">
-                            <i class="fas fa-table"></i>
-                            <span id="table_name">Data Table</span>
-                        </div> -->
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>writer</th>
-                                            <th>memo</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="sc_list">
-                                        {% for hint in hintlist %}
-                                        <tr>
-                                            <td>
-                                                <a href={{hint.link}}>{{hint.name}}</a>
-                                            </td>
-                                            <td>
-                                                <a href={{hint.link}}>{{hint.writer}}</a>
-                                            </td>
-                                            <td>
-                                                <a href={{hint.link}}>{{hint.memo}}</a>
-                                            </td>
-                                        </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
+                            <div class="contact-text">
+                                <h2>Get in touch</h2>
+                                <form action="" class="contact-form">
+                                    <input type="text" placeholder="Title" />
+                                    <input type="text" placeholder="WriterName" />
+                                    <link></link>
+                                    <textarea placeholder="Memo"></textarea>
+                                    <button class="site-btn">Send message</button>
+                                </form>
                             </div>
                         </div>
                         <!-- <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div> -->
                     </div>
-
-                    <!-- <p class="small text-center text-muted my-5">
-                        <em>More table examples coming soon...</em>
-                    </p> -->
-
                 </div>
                 <!-- /.container-fluid -->
 
@@ -126,11 +99,7 @@
         </a>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" ></script>
-        <!-- <script src="/static/epic/vendor/datatables/jquery.dataTables.js"></script>
-        <script src="/static/epic/vendor/datatables/dataTables.bootstrap4.js"></script> -->
-        <!-- <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script> -->
-
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
         <script src="/static/epic/js/sb-admin.min.js"></script>
         <script src="/static/epic/js/addition.js"></script>
         <script>
@@ -140,7 +109,7 @@
                 $("#footer").load("/static/epic/extention_html/footer.html");
                 $("#Nav").load("/static/epic/extention_html/navbar.html");
                 $("#sidebar").load("/static/epic/extention_html/sidebar.html", function () {
-                    document.getElementById("tip_lit").className += " active";
+                    document.getElementById("Notic_lit").className += " active";
                 });
                 $("#modalDialog").load("/static/epic/extention_html/modal_dialog.html");
             });

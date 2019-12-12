@@ -1,7 +1,19 @@
 .list_game {
     list-style: none;
 }
-
+#wrapper{
+    background:linear-gradient(rgba(255,255,255,0), rgba(256,256,255,1)), url('https://d3kxs6kpbh59hp.cloudfront.net/community_admin/2019120505/epicseven_bg_%3F%3F%3F_1575523097.jpg');
+    background-repeat:no-repeat;
+    
+}
+/* body {
+    background-image: url('https://d3kxs6kpbh59hp.cloudfront.net/community_admin/2019120505/epicseven_bg_%3F%3F%3F_1575523097.jpg') !important;
+    background-size: 100%;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-position: left top;
+    position:absolute;
+} */
 #Nav .nav-item a:active,
 #Nav .nav-item a:link,
 #Nav .nav-item a:visited,
@@ -145,6 +157,9 @@ button.bg-green2:focus {
 .show>.btn.dropdown-toggle:focus {
     -webkit-box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
     box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+}
+.sidebar{
+    background-color :rgba(0, 0, 0, 0) !important;
 }
 
 .navbar-nav .nav-item.active .nav-link {

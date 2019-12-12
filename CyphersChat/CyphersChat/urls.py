@@ -19,12 +19,12 @@ from django.urls import path, include
 import cyphers.views
 import cyphers.api
 import home.views
+import epic7.api
 import epic7.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('api', include('cyphers.api')),
-    path('api/', cyphers.api.api, name='api'),
     path('', home.views.index),
     path('index', home.views.index),
     path('info',home.views.info),
@@ -38,6 +38,8 @@ urlpatterns = [
     path('404', home.views._404),
     path('#', home.views.index),
     path('search', home.views.search),
+    #Cyphers
+    path('api/', cyphers.api.api, name='api'),
     path('api/todayCyphers', cyphers.api.todayCyphers),
     path('api/UserID/name=<name>', cyphers.api.getUserID),
     path('api/charRank/char=<charname>', cyphers.api.charRank),
@@ -45,7 +47,12 @@ urlpatterns = [
     path('api/allRanking/<args>', cyphers.api.allRanking),
     path('api/allRanking', cyphers.api.allRank),
     path('api/rating/<args>', cyphers.api.rating),
+    #epic7
     path('epic/',epic7.views.index),
     path('epic/tips',epic7.views.tiplit),
     path('epic/search',epic7.views.search),
+    path('epic/notic',epic7.views.notic),
+    path('epic/post',epic7.views.post),
+    #epic7API
+    path('epic/info',epic7.api.info),
 ]

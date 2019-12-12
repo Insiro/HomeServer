@@ -23,7 +23,6 @@
     </head>
 
     <body id="page-top">
-        <div id="BGI" ></div>
 
 
         <!-- dialog -->
@@ -55,6 +54,7 @@
             <div class="sidebar navbar-na" id='sidebar'></div>
 
             <div id="content-wrapper">
+
                 <div class="container-fluid">
 
                     <!-- Breadcrumbs-->
@@ -82,16 +82,16 @@
                                         </tr>
                                     </thead>
                                     <tbody id="sc_list">
-                                        {% for hint in hintlist %}
-                                        <tr>
+                                        {% for not in hintlist %}
+                                        <tr onclick="viewDialog('notic','{{ not.id }}')">
                                             <td>
-                                                <a href={{hint.link}}>{{hint.name}}</a>
+                                                <a  href=javascript:void(0)>{{not.name}}</a>
                                             </td>
                                             <td>
-                                                <a href={{hint.link}}>{{hint.writer}}</a>
+                                                <a  href=javascript:void(0)>{{not.writer}}</a>
                                             </td>
                                             <td>
-                                                <a href={{hint.link}}>{{hint.memo}}</a>
+                                                <a  href=javascript:void(0)>{{not.memo}}</a>
                                             </td>
                                         </tr>
                                         {% endfor %}
@@ -140,7 +140,7 @@
                 $("#footer").load("/static/epic/extention_html/footer.html");
                 $("#Nav").load("/static/epic/extention_html/navbar.html");
                 $("#sidebar").load("/static/epic/extention_html/sidebar.html", function () {
-                    document.getElementById("tip_lit").className += " active";
+                    document.getElementById("Notic_lit").className += " active";
                 });
                 $("#modalDialog").load("/static/epic/extention_html/modal_dialog.html");
             });

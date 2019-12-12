@@ -1,4 +1,4 @@
-var hostname = 'https://localhost:8080/api/'
+var hostname = 'insiro.me.epic'
 
 function go_table() {
     if (arguments.length < 1) {
@@ -47,66 +47,32 @@ function viewDialog() {
         var detailBtn = document.getElementById("detailBtn")
         var content = document.getElementById("dialogContents")
         var req = new XMLHttpRequest()
-        var id = arguments[0]
-        var table = arguments[1]
-        req.open("GET", hostname + "info/" + table + "/" + id);
+        var id = arguments[1]
+        var table = arguments[0]
+        req.open("GET", "info?table=" + table + "&id=" + id);
         req.addEventListener("load", function () {
             if (req.status != 200) {
                 console.log('status error')
                 nullDialog()
                 return
             }
-            detailBtn.addEventListener("click", function () {
-                go_detail(id, table)
-                //location.href = "detail?id=\"" + id + "\"&table=\"" + table + "\"";
-            })
+            // detailBtn.addEventListener("click", function () {
+            //     go_detail(id, table)
+            //     //location.href = "detail?id=\"" + id + "\"&table=\"" + table + "\"";
+            // })
             content.innerHTML = "<table id='diatable'></table>"
             console.log("GetList Get success!");
-            var json = JSON.parse(req.responseText);
-            //console.log(json);
-            var data = json.data;
-            var curdata = data.data
+            var data = JSON.parse(req.responseText);
+            console.log(data)
             name.innerText = data.name;
+            content.innerHTML += "<h6>Writer : " + data.writer + "</h6>"
+            if (data.link != null)
+                content.innerHTML += "<a href = '" + data.link + "'>link</a>"
             //console.log("curdata", curdata)
-            var _table = document.getElementById("diatable")
-            _table.innerHTML += "<tr><th>start</th><td>" + data.start + "</td></tr>"
-            if (data.end != null) _table.innerHTML += "<tr><th>end</th><td>" + data.end + "</td></tr>"
-            if (curdata.Organizer != null) {
-                var organizerString = "<tr><th>Organizer</th>";
-                for (var i = 0; i < curdata.Organizer.length; i++) {
-                    var currentOrganizer = curdata.Organizer[i];
-                    organizerString += "<td><a href='" + currentOrganizer.link + "'>" + currentOrganizer.name + "</a></td>";
-                }
-                organizerString += "</tr>";
-                _table.innerHTML += organizerString;
-            }
-            if (curdata.Links != null) _table.innerHTML += "<tr><th>Link</th><td><a href=\"" + curdata.Links.link + "\"'>WebPage</a></td></tr>"
-            if (curdata['Number of Teams'] != null) _table.innerHTML += "<tr><th>Teams</th><td>" + curdata['Number of Teams'] + "</td></tr>"
-            if (curdata['Prize Pool'] != null) _table.innerHTML += "<tr><th>Prize_Pool</th><td>" + data['Prize Pool'] + "</td></tr>"
-            else if (curdata.Prize != null) _table.innerHTML += "<tr><th>Prize</th><td>" + curdata['Prize'] + "</td></tr>"
-            if (curdata.Region != null) _table.innerHTML += "<tr><th>Region</th><td>" + curdata.Region + "</td></tr>"
-            if (curdata.Type != null) _table.innerHTML += "<tr><th>Type</th><td>" + curdata.Type + "</td></tr>"
-            if (curdata.Tier != null) _table.innerHTML += "<tr><th>Tier</th><td>" + curdata.Tier + "</td></tr>"
-            if (curdata.Streams != null) {
-                var StreamStr = "<tr><th>Steams</th>";
-                for (var i = 0; i < curdata.Streams.length; i++) {
-                    curstream = curdata.Streams[i];
-                    StreamStr += "<td><a href=\"" + curstream.link + "\">" + curstream.name + "</a></td>"
-                }
-                _table.innerHTML += StreamStr + "</tr>";
-            }
-            if (curdata.Schedule != null) {
-                var schStr = "<table id='sch'  class='ssch' style=' display:none'border = 1><tr><th colspan = 2>schedule</th></tr>"
-                for (var i = 0; i < curdata.Schedule.length; i++) {
-                    curSchedule = curdata.Schedule[i]
-                    schStr += "<tr><td>" + curSchedule[0] + "</td><td>" + curSchedule[1] + "</td></tr>"
-                }
-                schStr += "</table>";
-                content.innerHTML += "<span>Schedule : </span> "
-                content.innerHTML += "<span style='' id='show'onclick=\"document.getElementById('sch').style.display='';document.getElementById('hide').style=' '; document.getElementById('show').style.display='none';\"><a href='javascript:;'>Show</a></span>"
-                content.innerHTML += "<span style='display:none' id='hide'onclick=\"document.getElementById('sch').style.display='none';document.getElementById('show').style=' '; document.getElementById('hide').style.display='none';\"><a href='javascript:;'>Hide</a></span><br>"
-                content.innerHTML += schStr
-            }
+            if (data.contents != null)
+                content.innerHTML += "<p>" + data.contents.split("\n").join("<br>") + "</p>"
+            else if (data.memo != null)
+                content.innerHTML += "<p>" + data.memo.split("\n").join("<br>") + "</p>"
 
         });
         req.send(null);
