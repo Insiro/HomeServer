@@ -49,6 +49,7 @@ urlpatterns = [
     path('api/rating/<args>', cyphers.api.rating),
     #epic7
     path('epic/',epic7.views.index),
+    path('epic/index',epic7.views.index),
     path('epic/tips',epic7.views.tiplit),
     path('epic/search',epic7.views.search),
     path('epic/notic',epic7.views.notic),

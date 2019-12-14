@@ -112,7 +112,10 @@
     <script src="/static/home/js/main.js"></script>
     <script>
       $(function () {
-        $("#side-bar").load("/static/home/extend_html/side-bar.html");
+        $("#side-bar").load("/static/home/extend_html/side-bar.html",function(){
+          document.getElementById("side_contact").className = "active";
+        });
+        
       });
     </script>
   </body>

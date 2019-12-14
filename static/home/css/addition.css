@@ -1,0 +1,7 @@
+
+#carousels >.carousel-item >img {
+    vertical-align: middle;
+    overflow: inherit;
+    max-height: 350px;
+    max-width: 180px;
+  }

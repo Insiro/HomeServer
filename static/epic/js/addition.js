@@ -2,10 +2,8 @@ var hostname = 'insiro.me.epic'
 
 function go_table() {
     if (arguments.length < 1) {
-        console.log("None");
         location.href = "Tables?table=" + "None";
     } else {
-        console.log(arguments[0]);
         location.href = "Tables?table=" + arguments[0];
     }
 }
@@ -13,19 +11,14 @@ function go_table() {
 function go_detail() {
     //argu[0]:id, argu[1]:table
     if (arguments.length < 1) {
-        console.log("None");
         location.href = "detail?id=" + "None";
     } else {
-        console.log(arguments[0]);
         location.href = "detail?id=" + arguments[0] + "&table=" + arguments[1];
     }
 }
 
 function login() {
     var form = document.getElementByID('loginform').value;
-    //console.log(form)
-    //console.log(form.id)
-    //console.log(form.pxw)
     window.open(form + 'id :' + form.id)
 }
 
@@ -33,7 +26,6 @@ function nullDialog() {
     var name = document.getElementById("dialogName")
     var detailBtn = document.getElementById("detailBtn")
     var content = document.getElementById("dialogContents")
-    console.log("None");
     content.innerHTML = "None"
     name.innerText = "None"
     detailBtn.addEventListener("click", function () { location.href = "detail?id=None"; })
@@ -52,7 +44,6 @@ function viewDialog() {
         req.open("GET", "info?table=" + table + "&id=" + id);
         req.addEventListener("load", function () {
             if (req.status != 200) {
-                console.log('status error')
                 nullDialog()
                 return
             }
@@ -61,14 +52,11 @@ function viewDialog() {
             //     //location.href = "detail?id=\"" + id + "\"&table=\"" + table + "\"";
             // })
             content.innerHTML = "<table id='diatable'></table>"
-            console.log("GetList Get success!");
             var data = JSON.parse(req.responseText);
-            console.log(data)
             name.innerText = data.name;
             content.innerHTML += "<h6>Writer : " + data.writer + "</h6>"
             if (data.link != null)
                 content.innerHTML += "<a href = '" + data.link + "'>link</a>"
-            //console.log("curdata", curdata)
             if (data.contents != null)
                 content.innerHTML += "<p>" + data.contents.split("\n").join("<br>") + "</p>"
             else if (data.memo != null)
@@ -88,9 +76,7 @@ function getGameList(theGame, length) {
     req.open("GET", hostname + "list/" + theGame + "/" + length);
     req.addEventListener("load", function () {
         if (req.status === 200) {
-            console.log("GetList success!");
             var json = JSON.parse(req.responseText);
-            //console.log(json);
             var data = json.data;
             writeList(theGame, data);
         } else {
@@ -106,9 +92,7 @@ function get_detail(table, id) {
     req.open("GET", hostname + "info/" + table + "/" + id);
     req.addEventListener("load", function () {
         if (req.status === 200) {
-            console.log("Get info success!");
             var json = JSON.parse(req.responseText);
-            //console.log(json);
             var data = json.data;
             writedata(data);
         } else {
@@ -172,15 +156,11 @@ function reloadLoginState(loginBox) {
     loginXhttpRequest.addEventListener("load", function () {
         var log_in_item = document.getElementById('logged_nav').style;
         var un_log_in_tem = document.getElementById('unlogged_nav').style;
-        //console.log(log_in_item, un_log_in_tem);
         json = JSON.parse(loginXhttpRequest.responseText);
-        //console.log(json);
         if (json.login) {
-            console.log("login: id:" + json.id);
             log_in_item.display = 'none';
             un_log_in_tem.display = '';
         } else {
-            console.log("logout");
             log_in_item.display = '';
             un_log_in_tem.display = 'none';
         }

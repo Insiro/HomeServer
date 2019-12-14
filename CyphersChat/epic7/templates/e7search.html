@@ -135,7 +135,6 @@
         kq = "{{ kq }}";
         if (kq != null && kq != "None") {
           search_str = kq.replace("+", " ");
-          console.log(search_str);
           //getSearchData('LOL', search_str)
           document.title = document.title + " : " + search_str;
           var search_s = document.getElementById("search_keyword");
@@ -157,14 +156,11 @@
         );
         req.addEventListener("load", function() {
           if (req.status === 200) {
-            console.log("GetList Get success!");
             var json = JSON.parse(req.responseText);
-            console.log(json);
             var data = json.data;
             writeList(arguments[0], data);
           } else {
             writeList();
-            console.error("NONE");
           }
         });
         req.send(null);

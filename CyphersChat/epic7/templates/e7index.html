@@ -132,20 +132,6 @@
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>
     <script src="/static/epic/js/addition.js"></script>
     <script>
-      //login
-      // if (window.sessionStorage.getItem('login') == true) {
-      //     console.log('logined')
-      //     var logined = document.getElementsByClassName('loggined');
-      //     var unloggined = document.getElementsByClassName('unloggined');
-      //     for (i = 0; i < loggined.length; i++) {
-      //         logined.item(i).style.display = 'none';
-      //     }
-      //     for (i = 0; i < loggined.length; i++) {
-      //         logined.item(i).style.display = 'inline';
-      //     }
-      // } else {
-      //     console.log('Not logged in')
-      // }
       $(function () {
         $("#footer").load("/static/epic/extention_html/footer.html");
         $("#Nav").load("/static/epic/extention_html/navbar.html");
@@ -156,7 +142,6 @@
         $("#modalDialog").load("/static/epic/extention_html/modal_dialog.html");
         $("#Login").load("/static/epic/extention_html/log-inModal.html");
       });
-      console.log("{{hints}}");
 
       function writeList() {
         if (arguments[1].length == 0 || arguments.length < 1)

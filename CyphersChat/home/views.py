@@ -1,13 +1,16 @@
 from django.shortcuts import render
 from home.models import projects, Kategorie,project_Img
+from django.forms.models import model_to_dict
 
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
 
 def search(request):
-    getData = request.GET
-    return render(request, 'search.html',getData)
+    req = request.GET
+    if 'kq'in req:
+        keyword = request.get('kq')
+    return render(request, 'search.html')
 
 def blank(request):
     return render(request, 'about.html')
@@ -17,11 +20,15 @@ def info(request):
 
 def detail(request):
     getData = request.GET
+    datas = {'id':0,'kate':None,'Dat':None,'img':None}
     if 'id'in getData:
-        pass;
-    return render(request, 'about.html',getData)
-    #if project_id!=None or project_id!=0:
-        #img = project_Img.
+        ID = getData.get('id')
+        datas['id'] = ID
+        datas['Dat'] = model_to_dict(projects.objects.get(id = int(ID)))
+        kate = model_to_dict(Kategorie.objects.get(id = datas['Dat']['kate']))
+        datas['kate']=kate['name']
+        datas['img'] = project_Img.objects.filter(projects_id=int(ID))
+    return render(request, 'about.html',datas)
 
 def _404(request):
     return render(request, '404.html')
