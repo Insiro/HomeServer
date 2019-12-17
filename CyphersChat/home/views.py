@@ -8,6 +8,8 @@ def index(request):
 
 def search(request):
     req = request.GET
+    for r in req:
+        r.replace('<',"&lt")
     if 'kq'in req:
         keyword = request.get('kq')
     return render(request, 'search.html')
@@ -20,6 +22,8 @@ def info(request):
 
 def detail(request):
     getData = request.GET
+    for r in getData:
+        r.replace('<',"&lt")
     datas = {'id':0,'kate':None,'Dat':None,'img':None}
     if 'id'in getData:
         ID = getData.get('id')
@@ -34,7 +38,10 @@ def _404(request):
     return render(request, '404.html')
 
 def table(request):
-    table = request.GET.get('table')
+    req = request.GET
+    for r in req:
+        r.replace('<',"&lt")
+    table = req.get('table')
     return render(request, 'Tables.html',{'kq':table})
 
 def project(request):

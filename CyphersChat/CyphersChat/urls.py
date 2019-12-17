@@ -54,6 +54,7 @@ urlpatterns = [
     path('epic/search',epic7.views.search),
     path('epic/notic',epic7.views.notic),
     path('epic/post',epic7.views.post),
+    path('epic/detail',epic7.views.detail),
     #epic7API
     path('epic/info',epic7.api.info),
 ]

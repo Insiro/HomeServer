@@ -64,14 +64,14 @@
             <li class="breadcrumb-item">
               <a href="index">Dashboard</a>
             </li>
-            <li class="breadcrumb-item active">Search</li>
+            <li class="breadcrumb-item active">Search {{ kq }}</li>
           </ol>
 
           <!-- Page Content -->
           <hr />
           <div class="card mb-3">
               <div class="card-header">
-                  <h3 id="table_name">Search</h3>
+                  <h3 id="table_name">Search {{ kq }}</h3>
               </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -83,15 +83,29 @@
                 >
                   <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>start</th>
-                      <th>end</th>
+                      <th>카테고리</th>
+                      <th>ID</th>
+                      <th>작성자</th>
+                      <th>제목</th>
                     </tr>
                   </thead>
                   <tbody id="sc_list">
-                    <tr>
-                      <td colspan="4">No Data</td>
+                    {% for data in notic%}
+                    <tr onclick="viewDialog('notic','{{ data.id }}')">
+                      <td>notic</td>
+                      <td>{{data.id}}</td>
+                      <td>{{data.writer}}</td>
+                      <td>{{data.name}}</td>
                     </tr>
+                    {% endfor %}
+                    {% for data in tips%}
+                    <tr onclick="viewDialog('tips','{{ data.id }}')">
+                      <td>tips</td>
+                      <td>{{data.id}}</td>
+                      <td>{{data.writer}}</td>
+                      <td>{{data.name}}</td>
+                    </tr>
+                    {% endfor %}
                   </tbody>
                 </table>
               </div>
@@ -129,67 +143,6 @@
         $("#modalDialog").load("/static/epic/extention_html/modal_dialog.html");
         $("#Login").load("/static/epic/extention_html/log-inModal.html");
       });
-      var search_str = null;
-
-      function getVariableHandler() {
-        kq = "{{ kq }}";
-        if (kq != null && kq != "None") {
-          search_str = kq.replace("+", " ");
-          //getSearchData('LOL', search_str)
-          document.title = document.title + " : " + search_str;
-          var search_s = document.getElementById("search_keyword");
-          search_s.innerText = "Search : " + search_str;
-          var breads = document.getElementById("breadcrumb");
-          breads.innerHTML +=
-            "<li class='breadcrumb-item active'>" + search_str + "</li>";
-        }
-      }
-
-      function getSearchData() {
-        var req = new XMLHttpRequest();
-        req.open(
-          "GET",
-          "https://localhost:8080/api/search/" +
-            arguments[0] +
-            "/" +
-            arguments[1]
-        );
-        req.addEventListener("load", function() {
-          if (req.status === 200) {
-            var json = JSON.parse(req.responseText);
-            var data = json.data;
-            writeList(arguments[0], data);
-          } else {
-            writeList();
-          }
-        });
-        req.send(null);
-      }
-
-      function writeList() {
-        if (arguments.length != 0) {
-          if (arguments[1].length == 0) {
-            return;
-          }
-          var table = document.getElementById("sc_list");
-          table.innerHTML = "";
-          var cur;
-          for (var i = 0; i < arguments[1].length; i++) {
-            cur = arguments[1][i];
-            table.innerHTML +=
-              '<tr onclick=viewDialog("' +
-              cur._id +
-              "\",'LOL')><td><a href='javascript:;'>" +
-              cur.name +
-              "</a></td><td>" +
-              cur.start +
-              "</td><td>" +
-              cur.end +
-              "</td></a></tr>";
-          }
-        }
-      }
-      getVariableHandler();
     </script>
   </body>
 </html>

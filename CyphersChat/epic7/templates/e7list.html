@@ -13,13 +13,13 @@
         <title>무한 기사단 공략</title>
 
         <!-- Custom fonts for this template-->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
         <!-- Custom styles for this template-->
         <link href="{% static 'epic/css/sb-admin.css'%}" rel="stylesheet">
         <link href="{% static 'epic/css/addition.css'%}" rel="stylesheet">
         <!-- <link href="{% static 'epic/vendor/datatables/dataTables.bootstrap4.css'%}" rel="stylesheet"> -->
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
- 
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css" />
+
     </head>
 
     <body id="page-top">
@@ -76,22 +76,22 @@
                                 <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th>Id</th>
                                             <th>Name</th>
                                             <th>writer</th>
-                                            <th>memo</th>
                                         </tr>
                                     </thead>
                                     <tbody id="sc_list">
-                                        {% for not in hintlist %}
-                                        <tr onclick="viewDialog('notic','{{ not.id }}')">
+                                        {% for data in datas %}
+                                        <tr onclick="viewDialog('{{table}}','{{ data.id }}')">
                                             <td>
-                                                <a  href=javascript:void(0)>{{not.name}}</a>
+                                                <a href=javascript:;>{{data.id}}</a>
                                             </td>
                                             <td>
-                                                <a  href=javascript:void(0)>{{not.writer}}</a>
+                                                <a href=javascript:;>{{data.name}}</a>
                                             </td>
                                             <td>
-                                                <a  href=javascript:void(0)>{{not.memo}}</a>
+                                                <a href=javascript:;>{{data.writer}}</a>
                                             </td>
                                         </tr>
                                         {% endfor %}
@@ -126,7 +126,7 @@
         </a>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" ></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
         <!-- <script src="/static/epic/vendor/datatables/jquery.dataTables.js"></script>
         <script src="/static/epic/vendor/datatables/dataTables.bootstrap4.js"></script> -->
         <!-- <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script> -->

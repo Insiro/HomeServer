@@ -30,7 +30,14 @@ function nullDialog() {
     name.innerText = "None"
     detailBtn.addEventListener("click", function () { location.href = "detail?id=None"; })
 }
-
+function copyText(st){
+    copyDummy= document.createElement("textarea");
+    document.body.appendChild(copyDummy);
+    copyDummy.value = st;
+    copyDummy.select();
+    document.execCommand('copy');
+    document.body.removeChild(copyDummy);
+}
 function viewDialog() {
     //arg0=id
     if (arguments.length < 1) nullDialog()
@@ -47,11 +54,12 @@ function viewDialog() {
                 nullDialog()
                 return
             }
-            // detailBtn.addEventListener("click", function () {
-            //     go_detail(id, table)
-            //     //location.href = "detail?id=\"" + id + "\"&table=\"" + table + "\"";
-            // })
-            content.innerHTML = "<table id='diatable'></table>"
+            detailBtn.addEventListener("click", function () {
+                go_detail(id, table)
+            })
+            content.innerHTML = "<a href='javascript:;' onclick=\"copyText('insiro.me/epic/detail?table=" + table + "&id=" + id + "')\">주소 복사</a>";
+
+            content.innerHTML += "<table id='diatable'></table>"
             var data = JSON.parse(req.responseText);
             name.innerText = data.name;
             content.innerHTML += "<h6>Writer : " + data.writer + "</h6>"
