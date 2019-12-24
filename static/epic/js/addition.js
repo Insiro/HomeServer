@@ -38,6 +38,11 @@ function copyText(st){
     document.execCommand('copy');
     document.body.removeChild(copyDummy);
 }
+function MSGDialog(str) {
+    var content = document.getElementById("simpleContents")
+    content.innerHTML += String(str).split('\n').join('<br>');
+    $('#simpleDialog').modal('show')
+}
 function viewDialog() {
     //arg0=id
     if (arguments.length < 1) nullDialog()
@@ -57,7 +62,7 @@ function viewDialog() {
             detailBtn.addEventListener("click", function () {
                 go_detail(id, table)
             })
-            content.innerHTML = "<a href='javascript:;' onclick=\"copyText('insiro.me/epic/detail?table=" + table + "&id=" + id + "')\">주소 복사</a>";
+            content.innerHTML = "<a href='javascript:;' onclick=\"copyText('insiro.me/epic/detail?table=" + table + "&id=" + id + "')\"><small>주소 복사</small></a>";
 
             content.innerHTML += "<table id='diatable'></table>"
             var data = JSON.parse(req.responseText);
@@ -66,9 +71,9 @@ function viewDialog() {
             if (data.link != null)
                 content.innerHTML += "<a href = '" + data.link + "'>link</a>"
             if (data.contents != null)
-                content.innerHTML += "<p>" + data.contents.split("\n").join("<br>") + "</p>"
+                content.innerHTML += "<p>" + data.contents.split("\n").join("<br>").split(" ").join("&nbsp;").split("<a&nbsp;").join("<a ").split("a&nbsp;>").join("a>") + "</p>"
             else if (data.memo != null)
-                content.innerHTML += "<p>" + data.memo.split("\n").join("<br>") + "</p>"
+                content.innerHTML += "<p>" + data.memo.split("\n").join("<br>").split(" ").join("&nbsp;").split("<a&nbsp;").join("<a ").split("a&nbsp;>").join("a>") + "</p>"
 
         });
         req.send(null);

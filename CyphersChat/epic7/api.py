@@ -16,23 +16,12 @@ def info(request):
         data = e7Models.tips.objects.get(id=int(id))
     else:
         data = get_object_or_404(e7Models.tips , pk=0)
-    return JsonResponse(model_to_dict(data),  json_dumps_params={'ensure_ascii': False})
+    return JsonResponse(model_to_dict(data), json_dumps_params={'ensure_ascii': False})
 
-# def allRank(requests):
-#     requests.GET.get("")
-#     count = 10
-#     start = 0
-#     global apiUrl
-#     global apikey
-#     Url = apiUrl+"ranking/ratingpoint?offset=" + \
-#         str(start) + '&limit=' + str(count)+apikey
-#     req = reqs.get(Url)
-#     if req.status_code != 200 and req.status_code != 201:
-#         print('Not respone ' + str(req.status_code))
-#         return JsonResponse({'data': None})
-#     dat = req.json()['rows']
-#     data = list()
-#     for dats in dat:
-#         data.append({'nick': dats['nickname'], 'rank': dats['rank'],
-#                      'RP': dats['ratingPoint'], 'grade': dats['grade']})
-#     return JsonResponse({"data": data},  json_dumps_params={'ensure_ascii': False})
+def allRank(requests):
+    url = "https://api.epicsevendb.com/api/hero/"
+    req = requests.GET
+    Cname = req.get('Cname')
+    url = url + Cname
+    data = {'s':0}
+    return JsonResponse({"data": data}, json_dumps_params={'ensure_ascii': False})

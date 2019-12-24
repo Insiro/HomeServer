@@ -10,7 +10,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>무한 기사단 공략</title>
+        <title>무한 기사단</title>
 
         <!-- Custom fonts for this template-->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
@@ -27,7 +27,7 @@
         <div class="modal dia" id="regist_new"> </div>
         <div class="modal dia" id="modalDialog"></div>
         <div class="modal dia" id="Login"> </div>
-        <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+        <nav class="fixed-top navbar navbar-expand navbar-dark bg-dark static-top">
 
             <a class="navbar-brand mr-1" href=".">무한기사단</a>
 
@@ -49,7 +49,7 @@
 
         <div id="wrapper">
             <!-- Sidebar -->
-            <div class="sidebar navbar-na" id='sidebar'></div>
+            <div class="sidebar d-none d-md-inline-block " id="sidebar"></div>
 
             <div id="content-wrapper">
 
@@ -58,7 +58,7 @@
                     <!-- Breadcrumbs-->
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="index">Dashboard</a>
+                            <a href="index">메인 페이지</a>
                         </li>
                         <li class="breadcrumb-item active" id="page_name">{{table}}</li>
                     </ol>
@@ -124,7 +124,7 @@
                 else {
                     if (data.memo != null) {
                         if (data.link != null) {
-                            document.getElementById('content').innerHTML = "<a href=\"" + data.link + "\">link</a><br>"
+                            document.getElementById('content').innerHTML = "<a href=\"" + data.link + "\"><small>link</small></a><br>"
                         }
                         
                         document.getElementById('content').innerHTML +=  (data.memmo.split("\n").join("<br>")).split(' ',"nbsp;").join('&nbsp;');

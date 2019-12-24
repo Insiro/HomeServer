@@ -29,7 +29,7 @@
         <div class="modal dia" id="regist_new"> </div>
         <div class="modal dia" id="modalDialog"></div>
         <div class="modal dia" id="Login"> </div>
-        <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+        <nav class="fixed-top navbar navbar-expand navbar-dark bg-dark static-top">
 
             <a class="navbar-brand mr-1" href=".">무한기사단</a>
 
@@ -51,7 +51,7 @@
 
         <div id="wrapper">
             <!-- Sidebar -->
-            <div class="sidebar navbar-na" id='sidebar'></div>
+            <div class="sidebar d-none d-md-inline-block " id="sidebar"></div>
 
             <div id="content-wrapper">
 
@@ -60,7 +60,7 @@
                     <!-- Breadcrumbs-->
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="index">Dashboard</a>
+                            <a href="index">메인 페이지</a>
                         </li>
                         <li class="breadcrumb-item active" id="page_name">공략</li>
                     </ol>
@@ -140,7 +140,16 @@
                 $("#footer").load("/static/epic/extention_html/footer.html");
                 $("#Nav").load("/static/epic/extention_html/navbar.html");
                 $("#sidebar").load("/static/epic/extention_html/sidebar.html", function () {
-                    document.getElementById("Notic_lit").className += " active";
+                    switch ("{{table}}") {
+                        case 'notic':
+                            document.getElementById("Notic_lit").className += " active";
+                            break;
+                        case 'tips':
+                            document.getElementById("tip_lit").className += " active";
+                            break;
+                        default:
+                            break;
+                    }
                 });
                 $("#modalDialog").load("/static/epic/extention_html/modal_dialog.html");
             });

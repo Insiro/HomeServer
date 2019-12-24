@@ -1,76 +1,95 @@
 .list_game {
-    list-style: none;
+  list-style: none;
 }
-#wrapper{
-    background:linear-gradient(rgba(255,255,255,0), rgba(256,256,255,1)), url('https://d3kxs6kpbh59hp.cloudfront.net/community_admin/2019120505/epicseven_bg_%3F%3F%3F_1575523097.jpg');
-    background-repeat:no-repeat;
-    
-}
-/* body {
-    background-image: url('https://d3kxs6kpbh59hp.cloudfront.net/community_admin/2019120505/epicseven_bg_%3F%3F%3F_1575523097.jpg') !important;
-    background-size: 100%;
-    background-repeat:no-repeat;
-    background-attachment:fixed;
-    background-position: left top;
-    position:absolute;
+/* #wrapper {
+
 } */
+.calcFormBtn {
+  margin: 10px 15px 10px 15px;
+  padding: 0px 15px 0px 15px;
+}
+#CalForm > div > input {
+  max-width: 100px;
+  text-align: center;
+  border-radius: 10px !important;
+}
+.calcLabel {
+  margin-left: 10px !important;
+  width: 100px !important;
+  text-align: right !important;
+}
+body {
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(256, 256, 255, 1)),
+    url("https://d3kxs6kpbh59hp.cloudfront.net/community_admin/2019120505/epicseven_bg_%3F%3F%3F_1575523097.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding-top: 3.5rem !important;
+}
 #Nav .nav-item a:active,
 #Nav .nav-item a:link,
 #Nav .nav-item a:visited,
 #Nav .nav-item a:hover {
-    color: #A593E0 !important;
+  color: #a593e0 !important;
 }
 
 .nav-item {
-    color: #A593E0;
+  color: #a593e0;
 }
 
 .list-game {
-    text-decoration: underline
+  text-decoration: underline;
 }
-
+.side-item {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 30px;
+}
+.sticky-footer {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
 .list-white a {
-    color: white;
+  color: white;
 }
 
 .text-sideorange,
 .list-sideorange,
 .list-sideorange a {
-    color: ivory;
+  color: ivory;
 }
 
 .list-black a {
-    color: black;
+  color: black;
 }
 
 .list-red a {
-    color: red;
+  color: red;
 }
 
 .list-grey a {
-    color: #494f54;
+  color: #494f54;
 }
 
 .text-sidegold,
 .list-sidegold,
 .list-sidegold a {
-    color: #545245 !important;
+  color: #545245 !important;
 }
 
 .list-game li a {
-    color: white;
+  color: white;
 }
 
 .list-game a:hover {
-    color: blue
+  color: blue;
 }
-
+.Cardname {
+  word-break: keep-all;
+}
 .bg-gold,
 a.bg-gold:hover,
 a.bg-gold:focus,
 button.bg-gold:hover,
 button.bg-gold:focus {
-    background-color: gold !important;
+  background-color: gold !important;
 }
 
 .bg-orange2,
@@ -78,7 +97,7 @@ a.bg-orange2:hover,
 a.bg-orange2:focus,
 button.bg-orange2:hover,
 button.bg-orange2:focus {
-    background-color: #ffb347 !important;
+  background-color: #ffb347 !important;
 }
 
 .bg-pupple,
@@ -86,7 +105,8 @@ a.bg-pupple:hover,
 a.bg-pupple:focus,
 button.bg-pupple:hover,
 button.bg-pupple:focus {
-    background-color: #A593E0 !important;
+  background-color: rgba(165, 147, 224, 0.534) !important;
+  /* background-color: #7fa593e0 !important; */
 }
 
 .bg-Ocher,
@@ -94,8 +114,8 @@ a.bg-Ocher:hover,
 a.bg-Ocher:focus,
 button.bg-Ocher:hover,
 button.bg-Ocher:focus {
-    background-color: #c68a12c4 !important;
-    /*
+  background-color: #c68a12c4 !important;
+  /*
     background-color: #c68a12 !important;*/
 }
 
@@ -104,7 +124,7 @@ a.bg-blue2:hover,
 a.bg-blue2:focus,
 button.bg-blue2:hover,
 button.bg-blue2:focus {
-    background-color: #779ecb !important;
+  background-color: #779ecb !important;
 }
 
 .bg-blue3,
@@ -112,8 +132,8 @@ a.bg-blue3:hover,
 a.bg-blue3:focus,
 button.bg-blue3:hover,
 button.bg-blue3:focus {
-    background-color: #89cde2a1 !important;
-    /* background-color: #d4ebf2 !important;*/
+  background-color: #89cde2a1 !important;
+  /* background-color: #d4ebf2 !important;*/
 }
 
 .bg-green2,
@@ -121,62 +141,70 @@ a.bg-green2:hover,
 a.bg-green2:focus,
 button.bg-green2:hover,
 button.bg-green2:focus {
-    background-color: #77dd77 !important;
+  background-color: #77dd77 !important;
 }
 
 .text-sideOcher,
 .list-sideOcher,
 .list-sideOcher a {
-    color: white;
+  color: white;
 }
 
 .newcolor {
-    color: #E84898 !important;
+  color: #e84898 !important;
 }
 
 .btn:not(:disabled):not(.disabled):active,
 .btn:not(:disabled):not(.disabled).active,
-.show>.btn.dropdown-toggle,
+.show > .btn.dropdown-toggle,
 .btn.disabled,
 .btn:disabled,
 .btn:hover,
 .btn {
-    color: #fff;
-    background-color: #A593E0;
-    border-color: #9D83F1;
+  color: #fff;
+  background-color: #a593e0;
+  border-color: #9d83f1;
 }
 
 .btn:focus,
 .btn.focus {
-    -webkit-box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
-    box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
 }
 
 .btn:not(:disabled):not(.disabled):active:focus,
 .btn:not(:disabled):not(.disabled).active:focus,
-.show>.btn.dropdown-toggle:focus {
-    -webkit-box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
-    box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+.show > .btn.dropdown-toggle:focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
 }
-.sidebar{
-    background-color :rgba(0, 0, 0, 0) !important;
+.sidebar {
+  background-color: rgba(0, 0, 0, 0) !important;
 }
-
+.sideMenu {
+  position: fixed !important;
+}
 .navbar-nav .nav-item.active .nav-link {
-    color: #A593E0;
+  color: #a593e0;
 }
 
 .navbar-brand {
-    color: #A593E0 !important;
+  color: #a593e0 !important;
 }
 
 .navbar-nav .nav-item {
-    margin: 5px;
+  margin: 5px;
+}
+
+@media (min-width: 720px) {
+  #content-wrapper {
+    margin-left: 1.5rem !important;
+  }
 }
 
 .dropdown-item.active,
 .dropdown-item:active {
-    color: #fff;
-    text-decoration: none;
-    background-color: #A593E0;
+  color: #fff;
+  text-decoration: none;
+  background-color: #a593e0;
 }

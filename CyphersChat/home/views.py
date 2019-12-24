@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from home.models import projects, Kategorie,project_Img
 from django.forms.models import model_to_dict
+from django.db.models import Q
 
 # Create your views here.
 def index(request):
@@ -8,11 +9,18 @@ def index(request):
 
 def search(request):
     req = request.GET
+    data = {'projectlist':None,'kq':None}
     for r in req:
-        r.replace('<',"&lt")
+        r.replace('<', "&lt")
     if 'kq'in req:
-        keyword = request.get('kq')
-    return render(request, 'search.html')
+        kq = req.get('kq')
+        kq = kq.split(' ')
+        data['kq']=' '.join(kq)
+        search_filter = Q(name=None)
+        for k in kq:
+            search_filter = Q(name__icontains=k) | search_filter
+        data['projectlist'] = projects.objects.all().filter(search_filter)
+    return render(request, 'search.html', data)
 
 def blank(request):
     return render(request, 'about.html')
@@ -28,8 +36,8 @@ def detail(request):
     if 'id'in getData:
         ID = getData.get('id')
         datas['id'] = ID
-        datas['Dat'] = model_to_dict(projects.objects.get(id = int(ID)))
-        kate = model_to_dict(Kategorie.objects.get(id = datas['Dat']['kate']))
+        datas['Dat'] = model_to_dict(projects.objects.get(id=int(ID)))
+        kate = model_to_dict(Kategorie.objects.get(id=datas['Dat']['kate']))
         datas['kate']=kate['name']
         datas['img'] = project_Img.objects.filter(projects_id=int(ID))
     return render(request, 'about.html',datas)
@@ -47,7 +55,7 @@ def table(request):
 def project(request):
     prolit = projects.objects.all()
     kate = Kategorie.objects.all()
-    return render(request, 'project.html',{'projectlist':prolit, 'kate':kate})
+    return render(request, 'project.html', {'projectlist':prolit, 'kate':kate})
 
 def contact(request):
     return render(request, 'contact.html')

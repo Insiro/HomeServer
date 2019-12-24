@@ -14,9 +14,13 @@
     <title>무한기사단 Search</title>
 
     <!-- Custom styles for this template-->
-<link href="{% static 'epic/css/sb-admin.css'%}" rel="stylesheet" />
+    <link href="{% static 'epic/css/sb-admin.css'%}" rel="stylesheet" />
     <link href="{% static 'epic/css/addition.css'%}" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"
+    />
   </head>
 
   <body id="page-top">
@@ -24,7 +28,7 @@
     <div class="modal dia" id="regist_new"></div>
     <div class="modal dia" id="Login"></div>
     <div class="modal dia" id="modalDialog"></div>
-    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+    <nav class="fixed-top navbar navbar-expand navbar-dark bg-dark static-top">
       <a class="navbar-brand mr-1" href="./">무한기사단</a>
 
       <!-- Navbar Search -->
@@ -55,14 +59,18 @@
 
     <div id="wrapper">
       <!-- Sidebar -->
-      <div class="sidebar navbar-nav" id="sidebar"></div>
+
+      <div
+        class="sidebar d-none d-md-inline-block navbar-nav"
+        id="sidebar"
+      ></div>
 
       <div id="content-wrapper">
         <div class="container-fluid">
           <!-- Breadcrumbs-->
           <ol class="breadcrumb" id="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="index">Dashboard</a>
+              <a href="index">메인 페이지</a>
             </li>
             <li class="breadcrumb-item active">Search {{ kq }}</li>
           </ol>
@@ -70,9 +78,9 @@
           <!-- Page Content -->
           <hr />
           <div class="card mb-3">
-              <div class="card-header">
-                  <h3 id="table_name">Search {{ kq }}</h3>
-              </div>
+            <div class="card-header">
+              <h3 id="table_name">Search {{ kq }}</h3>
+            </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table
@@ -97,8 +105,7 @@
                       <td>{{data.writer}}</td>
                       <td>{{data.name}}</td>
                     </tr>
-                    {% endfor %}
-                    {% for data in tips%}
+                    {% endfor %} {% for data in tips%}
                     <tr onclick="viewDialog('tips','{{ data.id }}')">
                       <td>tips</td>
                       <td>{{data.id}}</td>
@@ -137,9 +144,7 @@
         $("#regist_new").load("/static/epic/extention_html/singUpModal.html");
         $("#footer").load("/static/epic/extention_html/footer.html");
         $("#Nav").load("/static/epic/extention_html/navbar.html");
-        $("#sidebar").load("/static/epic/extention_html/sidebar.html", function() {
-          document.getElementById("search_lit").className += " active";
-        });
+        $("#sidebar").load("/static/epic/extention_html/sidebar.html");
         $("#modalDialog").load("/static/epic/extention_html/modal_dialog.html");
         $("#Login").load("/static/epic/extention_html/log-inModal.html");
       });
