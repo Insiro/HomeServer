@@ -25,10 +25,6 @@
   </head>
 
   <body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-      <div class="loader"></div>
-    </div>
 
     <!-- Top right elements -->
     <div class="spacial-controls">
@@ -59,25 +55,18 @@
           <li class="filter" data-filter=".kate-{{kates.id}}">{{kates.name}} </li>
           {% endfor %}
         </ul>
-			<div class="portfolio-gallery">
+        <div class="portfolio-gallery">
           {% for prl in projectlist %}
-        <div class="gallery-item kate-{{prl.kate.id}}" style="text-align:center">
-          <h3>{{prl.name}}</h3>
-          {% if prl.icon %}
-          <img src="{{prl.icon.url}}" alt="" />
-          {% endif %}
-          <div class="hover-links">
-            <a href="detail?id={{prl.id}}" class="site-btn sb-light">about</a>
+          <div class="gallery-item kate-{{prl.kate.id}}" style="text-align:center">
+            <h3>{{prl.name}}</h3>
+            {% if prl.icon %}
+            <img src="{{prl.icon.url}}" alt="" />
+            {% endif %}
+            <div class="hover-links">
+              <a href="detail?id={{prl.id}}" class="site-btn sb-light">about</a>
+            </div>
           </div>
-        </div>
-        {% endfor %}
-        <div class="gallery-item kate-1" style="text-align:center">
-          <h3>test 1</h3>
-          <img src="img/gallery/1.jpg" alt="" />
-          <div class="hover-links">
-            <a href="" class="site-btn sb-light">Next</a>
-          </div>
-        </div>
+          {% endfor %}
         </div>
       </div>
       <!-- Page section end-->

@@ -9,15 +9,6 @@
 'use strict';
 
 
-$(window).on('load', function() {
-	/*------------------
-		Preloder
-	--------------------*/
-	$(".loader").fadeOut();
-	$("#preloder").delay(400).fadeOut("slow");
-
-});
-
 (function($) {
 	/*------------------
 		Navigation
@@ -55,67 +46,6 @@ $(window).on('load', function() {
 
 
 	/*------------------
-		Scrollbar
-	--------------------*/
-	if($(window).width() > 991) {
-		$(".header-section").niceScroll({
-			cursorborder:"",
-			cursorcolor:"#afafaf",
-			boxzoom:false,
-			cursorwidth: 4,
-		});
-	}
-
-	$(".blog-warp").niceScroll({
-		cursorborder:"",
-		cursorcolor:"#323232",
-		boxzoom:false,
-		cursorwidth: 3,
-		autohidemode:false,
-		background: '#b9c9da',
-		cursorborderradius:0,
-		railoffset: { top: 50, right: 0, left: 0, bottom: 0 },
-		railpadding: { top: 0, right: 0, left: 0, bottom: 100 },
-
-	});
-
-
-	/*------------------
-		Hero Slider
-	--------------------*/
-	var hero_s = $(".hero-slider");
-    hero_s.owlCarousel({
-        loop: true,
-        margin: 0,
-        nav: true,
-        items: 1,
-        dots: false,
-        animateOut: 'fadeOut',
-    	animateIn: 'fadeIn',
-        navText: ['<img src="/static/img/angle-left-w.png" alt="">', '<img src="/static/img/angle-rignt.png" alt="">'],
-        smartSpeed: 1200,
-        autoHeight: false,
-		startPosition: 'URLHash',
-        mouseDrag: false,
-        onInitialized: function() {
-        	var a = this.items().length;
-        	if(a < 10){
-            	$("#snh-1").html("<span>01" + "</span>/0" + a);
-       		} else{
-       			$("#snh-1").html("<span>01" + "</span>/" + a);
-       		}
-        }
-    }).on("changed.owl.carousel", function(a) {
-        var b = --a.item.index, a = a.item.count;
-        if(a < 10){
-        	$("#snh-1").html("<span>0" + ( 1 > b ? b + a : b > a ? b - a : b) + "</span>/0" + a);
-    	} else{
-    		$("#snh-1").html("<span> "+ (1 > b ? b + a : b > a ? b - a : b) + "</span>/" + a);
-    	}
-    });
-
-
-	/*------------------
 		Gallery Slider
 	--------------------*/
 	$('.gallery-single-slider').owlCarousel({
@@ -124,7 +54,7 @@ $(window).on('load', function() {
         nav: true,
         items: 1,
         dots: false,
-        navText: ['<img src="/static/img/angle-left.png" alt="">', '<img src="/static/img/angle-rignt-w.png" alt="">'],
+        navText: ['<img src="/static/home/img/angle-left.png" alt="">', '<img src="/static/home/img/angle-rignt-w.png" alt="">'],
 	});
 
 

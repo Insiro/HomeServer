@@ -52,9 +52,8 @@
           </div>
         </div>
       </form>
-
       <!-- Navbar -->
-      <div id="Nav"></div>
+      <div class="navbar-nav navbar-right" id="Nav"></div>
     </nav>
 
     <div id="wrapper">
@@ -67,7 +66,6 @@
 
       <div id="content-wrapper">
         <div class="container-fluid">
-          <!-- Breadcrumbs-->
           <ol class="breadcrumb" id="breadcrumb">
             <li class="breadcrumb-item">
               <a href="index">메인 페이지</a>
@@ -82,6 +80,25 @@
               <h3 id="table_name">Search {{ kq }}</h3>
             </div>
             <div class="card-body">
+              <div class="card-body">
+                <form class="d-inline-block d-md-none" action="search">
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="kq"
+                      placeholder="Search for..."
+                      aria-label="Search"
+                      aria-describedby="basic-addon2"
+                    />
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
               <div class="table-responsive">
                 <table
                   class="table table-hover"
@@ -91,24 +108,21 @@
                 >
                   <thead>
                     <tr>
-                      <th>카테고리</th>
                       <th>ID</th>
-                      <th>작성자</th>
-                      <th>제목</th>
+                      <th>writer</th>
+                      <th>title</th>
                     </tr>
                   </thead>
                   <tbody id="sc_list">
                     {% for data in notic%}
                     <tr onclick="viewDialog('notic','{{ data.id }}')">
-                      <td>notic</td>
-                      <td>{{data.id}}</td>
+                      <td>notic {{data.id}}</td>
                       <td>{{data.writer}}</td>
                       <td>{{data.name}}</td>
                     </tr>
                     {% endfor %} {% for data in tips%}
                     <tr onclick="viewDialog('tips','{{ data.id }}')">
-                      <td>tips</td>
-                      <td>{{data.id}}</td>
+                      <td>tips {{data.id}}</td>
                       <td>{{data.writer}}</td>
                       <td>{{data.name}}</td>
                     </tr>

@@ -8,7 +8,6 @@ import epic7.models as Models
 class TipsTable(admin.ModelAdmin):
     list_display = ['writer', 'name', 'important']
 
-
 admin.site.register(Models.tips, TipsTable)
 
 
@@ -23,3 +22,8 @@ class HerosTable(admin.ModelAdmin):
     list_display = ['SearchKey', 'name']
 
 admin.site.register(Models.Heros, HerosTable)
+
+class UserTable(admin.ModelAdmin):
+    list_display=['UID','name']
+
+admin.site.register(Models.user, UserTable)

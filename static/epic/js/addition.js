@@ -1,227 +1,140 @@
-var hostname = 'insiro.me.epic'
-
 function go_table() {
-    if (arguments.length < 1) {
-        location.href = "Tables?table=" + "None";
-    } else {
-        location.href = "Tables?table=" + arguments[0];
-    }
+  if (arguments.length < 1) {
+    location.href = "Tables?table=" + "None";
+  } else {
+    location.href = "Tables?table=" + arguments[0];
+  }
 }
 
 function go_detail() {
-    //argu[0]:id, argu[1]:table
-    if (arguments.length < 1) {
-        location.href = "detail?id=" + "None";
-    } else {
-        location.href = "detail?id=" + arguments[0] + "&table=" + arguments[1];
-    }
+  //argu[0]:id, argu[1]:table
+  if (arguments.length < 1) {
+    location.href = "detail?id=" + "None";
+  } else {
+    location.href = "detail?id=" + arguments[0] + "&table=" + arguments[1];
+  }
 }
 
-function login() {
-    var form = document.getElementByID('loginform').value;
-    window.open(form + 'id :' + form.id)
+function gotoPost(){
+  let isAuthorized = false
+  var req = new XMLHttpRequest()
+  req.open('POST',"https://insiro.me/epic/api/isAuthrized")
+  req.addEventListener("load",()=>{
+    if(req.status ==200){
+      data = JSON.parse(req.responseText);
+      isAuthorized = data["result"];
+    }
+  })
+  if (isAuthorized ==true){
+    location.href="insiro.me/epic/post"
+  }
+  else{
+    alert('Require Sign-In');
+  }
+  return;
 }
 
 function nullDialog() {
-    var name = document.getElementById("dialogName")
-    var detailBtn = document.getElementById("detailBtn")
-    var content = document.getElementById("dialogContents")
-    content.innerHTML = "None"
-    name.innerText = "None"
-    detailBtn.addEventListener("click", function () { location.href = "detail?id=None"; })
+  var name = document.getElementById("dialogName");
+  var detailBtn = document.getElementById("detailBtn");
+  var content = document.getElementById("dialogContents");
+  content.innerHTML = "None";
+  name.innerText = "None";
+  detailBtn.addEventListener("click", function() {
+    location.href = "detail?id=None";
+  });
 }
-function copyText(st){
-    copyDummy= document.createElement("textarea");
-    document.body.appendChild(copyDummy);
-    copyDummy.value = st;
-    copyDummy.select();
-    document.execCommand('copy');
-    document.body.removeChild(copyDummy);
+function copyText(st) {
+  copyDummy = document.createElement("textarea");
+  document.body.appendChild(copyDummy);
+  copyDummy.value = st;
+  copyDummy.select();
+  document.execCommand("copy");
+  document.body.removeChild(copyDummy);
 }
 function MSGDialog(str) {
-    var content = document.getElementById("simpleContents")
-    content.innerHTML += String(str).split('\n').join('<br>');
-    $('#simpleDialog').modal('show')
+  var content = document.getElementById("simpleContents");
+  content.innerHTML += String(str)
+    .split("\n")
+    .join("<br>");
+  $("#simpleDialog").modal("show");
 }
 function viewDialog() {
-    //arg0=id
-    if (arguments.length < 1) nullDialog()
-    else {
-        var name = document.getElementById("dialogName")
-        var detailBtn = document.getElementById("detailBtn")
-        var content = document.getElementById("dialogContents")
-        var req = new XMLHttpRequest()
-        var id = arguments[1]
-        var table = arguments[0]
-        req.open("GET", "info?table=" + table + "&id=" + id);
-        req.addEventListener("load", function () {
-            if (req.status != 200) {
-                nullDialog()
-                return
-            }
-            detailBtn.addEventListener("click", function () {
-                go_detail(id, table)
-            })
-            content.innerHTML = "<a href='javascript:;' onclick=\"copyText('insiro.me/epic/detail?table=" + table + "&id=" + id + "')\"><small>주소 복사</small></a>";
+  //arg0=id
+  if (arguments.length < 1) nullDialog();
+  else {
+    var name = document.getElementById("dialogName");
+    var detailBtn = document.getElementById("detailBtn");
+    var content = document.getElementById("dialogContents");
+    var req = new XMLHttpRequest();
+    var id = arguments[1];
+    var table = arguments[0];
+    req.open("GET", "info?table=" + table + "&id=" + id);
+    req.addEventListener("load", function() {
+      if (req.status != 200) {
+        nullDialog();
+        return;
+      }
+      detailBtn.addEventListener("click", function() {
+        go_detail(id, table);
+      });
+      content.innerHTML =
+        "<a href='javascript:;' onclick=\"copyText('insiro.me/epic/detail?table=" +
+        table +
+        "&id=" +
+        id +
+        "')\"><small>주소 복사</small></a>";
 
-            content.innerHTML += "<table id='diatable'></table>"
-            var data = JSON.parse(req.responseText);
-            name.innerText = data.name;
-            content.innerHTML += "<h6>Writer : " + data.writer + "</h6>"
-            if (data.link != null)
-                content.innerHTML += "<a href = '" + data.link + "'>link</a>"
-            if (data.contents != null)
-                content.innerHTML += "<p>" + data.contents.split("\n").join("<br>").split(" ").join("&nbsp;").split("<a&nbsp;").join("<a ").split("a&nbsp;>").join("a>") + "</p>"
-            else if (data.memo != null)
-                content.innerHTML += "<p>" + data.memo.split("\n").join("<br>").split(" ").join("&nbsp;").split("<a&nbsp;").join("<a ").split("a&nbsp;>").join("a>") + "</p>"
-
-        });
-        req.send(null);
-    }
-    $('#modalDialog').modal('show')
-
-}
-
-
-
-function getGameList(theGame, length) {
-    var req = new XMLHttpRequest()
-    req.open("GET", hostname + "list/" + theGame + "/" + length);
-    req.addEventListener("load", function () {
-        if (req.status === 200) {
-            var json = JSON.parse(req.responseText);
-            var data = json.data;
-            writeList(theGame, data);
-        } else {
-            writeList();
-            console.error("NONE");
-        }
+      content.innerHTML += "<table id='diatable'></table>";
+      var data = JSON.parse(req.responseText);
+      name.innerText = data.name;
+      content.innerHTML += "<h6>Writer : " + data.writer + "</h6>";
+      if(data.linkName != null &&data.link != null)
+        content.innerHTML += "<a href = '" + data.link + "'>"+data.linkName+"</a>";
+      else if (data.link != null)
+        content.innerHTML += "<a href = '" + data.link + "'>link</a>";
+      if (data.contents != null)
+        content.innerHTML +=
+          "<p>" +
+          data.contents
+            .split("\n")
+            .join("<br>")
+            .split(" ")
+            .join("&nbsp;")
+            .split("<a&nbsp;")
+            .join("<a ")
+            .split("a&nbsp;>")
+            .join("a>") +
+          "</p>";
+      if (data.memo != null)
+        content.innerHTML +=
+          "<p>" +
+          data.memo
+            .split("\n")
+            .join("<br>")
+            .split(" ")
+            .join("&nbsp;")
+            .split("<a&nbsp;")
+            .join("<a ")
+            .split("a&nbsp;>")
+            .join("a>") +
+          "</p>";
+      if (data.image != null && data.image != "")
+        content.innerHTML +=
+          "<img class='modalImg' src='https://insiro.me/media/" + data.image + "'>";
+      if (data.imageLink != null && data.imageLink != "")
+        content.innerHTML +=
+          "<img class='modalImg'src='" + data.imageLink + "'>";
     });
     req.send(null);
-}
-
-function get_detail(table, id) {
-    var req = new XMLHttpRequest()
-    req.open("GET", hostname + "info/" + table + "/" + id);
-    req.addEventListener("load", function () {
-        if (req.status === 200) {
-            var json = JSON.parse(req.responseText);
-            var data = json.data;
-            writedata(data);
-        } else {
-            writedata();
-            console.error("NONE");
-        }
-    });
-    req.send(null);
-}
-
-function getQueryVariable(variable) {
-    var query = window.location.search.substring(1);
-    var vars = query.split('&');
-    for (var i = 0; i < vars.length; i++) {
-        var pair = vars[i].split('=');
-        if (decodeURIComponent(pair[0]) == variable) {
-            return decodeURIComponent(pair[1]);
-        }
-    }
-    return null;
-}
-
-function includeHTML() {
-    var z, i, elmnt, file, xhttp;
-    z = document.getElementsByTagName("*");
-    for (i = 0; i < z.length; i++) {
-        elmnt = z[i];
-        file = elmnt.getAttribute("include-html");
-        if (file) {
-            xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    elmnt.innerHTML = this.responseText;
-                    elmnt.removeAttribute("include-html");
-                    includeHTML();
-                }
-            }
-            xhttp.open("GET", file, true);
-            xhttp.send();
-            return;
-        }
-    }
+  }
+  $("#modalDialog").modal("show");
 }
 
 function addFooter() {
-    var footerdiv = document.getElementById("footer")
-    var footerstr = "<div class=\"copyright text - center my - auto \"> <span > Copyright© Your Website 2019 </span> </div > "
-    footerstr += ""
-    footerdiv.innerHTML = footerstr
-}
-
-
-
-function reloadLoginState(loginBox) {
-    loginXhttpRequest = new XMLHttpRequest();
-    if (loginBox) {
-        $('#Login').modal('hide');
-    }
-
-    loginXhttpRequest.open("GET", "php/isLoggedin.php");
-    loginXhttpRequest.addEventListener("load", function () {
-        var log_in_item = document.getElementById('logged_nav').style;
-        var un_log_in_tem = document.getElementById('unlogged_nav').style;
-        json = JSON.parse(loginXhttpRequest.responseText);
-        if (json.login) {
-            log_in_item.display = 'none';
-            un_log_in_tem.display = '';
-        } else {
-            log_in_item.display = '';
-            un_log_in_tem.display = 'none';
-        }
-    });
-
-    loginXhttpRequest.send(null);
-}
-
-
-
-function loginRequest() {
-    var id = document.getElementById('login_id').value;
-    var pw = document.getElementById('login_pwd').value;
-
-    var xhttp = new XMLHttpRequest();
-
-    // Testing Code Only
-    xhttp.open("POST", "php/makelogin.php");
-
-    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
-    xhttp.addEventListener("load", function () {
-        parsedJson = JSON.parse(xhttp.responseText);
-
-        if (parsedJson.success) {
-            reloadLoginState(true);
-        } else {
-            console.error('login error');
-        }
-    });
-
-    xhttp.send("id=" + id + "&pwd=" + pw);
-}
-
-function logout() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "php/logout.php");
-
-    xhttp.addEventListener("load", function () {
-        reloadLoginState(false);
-    });
-
-    xhttp.send(null);
-
-}
-
-function signUp(data) {
-    if (data.pwd.value != data.check.value) {
-        return false;
-    }
-    return true;
+  var footerdiv = document.getElementById("footer");
+  var footerstr =
+    '<div class="copyright text - center my - auto "> <span > Copyright© Your Website 2019 </span> </div > ';
+  footerstr += "";
+  footerdiv.innerHTML = footerstr;
 }

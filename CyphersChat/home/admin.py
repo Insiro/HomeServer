@@ -14,11 +14,14 @@ admin.site.register(Models.Kategorie,KategorieAdmin)
 
 class CareerList(admin.ModelAdmin):
     list_display =['projectName','duration']
-class Stack(admin.ModelAdmin):
-    list_display = ['stackName']
+class Skill(admin.ModelAdmin):
+    list_display = ['skillName']
 admin.site.register(Models.show_pro)
 admin.site.register(Models.careers, CareerList)
 
 admin.site.register(Models.myInfo)
 
-admin.site.register(Models.stack,Stack )
+admin.site.register(Models.skill,Skill )
+
+admin.site.register(Models.usableLanguages)
+admin.site.register(Models.history)

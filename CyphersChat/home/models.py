@@ -19,7 +19,6 @@ class project_Img(models.Model):
     img = models.ImageField(upload_to="home/image")
     #img = models.URLField(max_length=1000)
     
-
 class show_pro(models.Model):
     project_id = models.IntegerField()
 
@@ -33,8 +32,19 @@ class careers(models.Model):
 class myInfo(models.Model):
     introduce = models.TextField(null = True, blank = True)
 
-class stack(models.Model):
-    stackName = models.CharField(max_length = 500)
+class skill(models.Model):
+    skillName = models.CharField(max_length = 50)
+    studying = models.BooleanField(default=False)
     def __str__(self):
-        return self.stackName
+        return self.skillName
 
+class usableLanguages(models.Model):
+    lang = models.CharField(max_length = 50)
+    def __str__(self):
+        return self.lang
+
+class history(models.Model):
+    name = models.CharField(max_length = 100)
+    period = models.CharField(max_length = 100)
+    def __str__(self):
+        return self.name

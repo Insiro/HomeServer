@@ -1,7 +1,12 @@
-
-#carousels >.carousel-item >img {
+#carousels > .carousel-item > img {
     vertical-align: middle;
     overflow: inherit;
     max-height: 350px;
     max-width: 180px;
-  }
+}
+
+.smalltitle {
+    text-decoration: underline !important;
+    text-decoration-color: grey !important;
+    text-underline-position: under;
+}

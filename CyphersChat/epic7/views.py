@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import epic7.models as e7Models
 from django.db.models import Q
+from django.core.exceptions import PermissionDenied
 # Create your views here.
 
 
@@ -11,7 +12,7 @@ def index(request):
 
 
 def tiplit(request):
-    lit = e7Models.tips.objects.all()
+    lit = e7Models.tips.objects.all().order_by('-id')
     hitlist = {'datas': lit, 'table': 'tips'}
     return render(request, 'e7list.html', hitlist)
 
@@ -35,12 +36,14 @@ def search(request):
 
 
 def notic(request):
-    lit = e7Models.notic.objects.all()
+    lit = e7Models.notic.objects.all().order_by('-id')
     datas = {'datas': lit, 'table': 'notic'}
     return render(request, 'e7list.html', datas)
 
 
 def post(request):
+    if not request.session.get('isSigned'):
+        raise PermissionDenied
     return render(request, 'e7post.html')
 
 
@@ -74,7 +77,6 @@ def damageCalc(request):
 
 
 def detail(request):
-    data = {'id': None, 'table': None, 'data': None}
     req = request.GET
     for r in req:
         r.replace('<', '&lt;').replace('>', '&rt;')
