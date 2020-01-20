@@ -1,9 +1,11 @@
 import sqlite3
 import requests
 from apscheduler.schedulers.blocking import BlockingScheduler
+from datetime import datetime
 # API Documents : https://epicsevendb-apiserver.herokuapp.com/
 
 def parse():
+    print(datetime.today().strftime("%Y%m%d"));
     con = sqlite3.connect('db.sqlite3')
     cur = con.cursor()
     url = "https://api.epicsevendb.com/api/hero"
@@ -30,5 +32,7 @@ def parse():
 
 if __name__ == "__main__":
     sched = BlockingScheduler()
-    sched.add_job(parse, 'cron',week='fri', hour='3')
+    sched.add_job(parse, trigger='cron',day_of_week='fri', hour='10')
+    print('r')
     sched.start()
+    print('start')
