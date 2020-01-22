@@ -63,5 +63,6 @@ urlpatterns = [
     # epicOutApi
     path('epic/api/getNotic', epic7.outApi.getNotic),
     path('epic/api/getReisterNotic', epic7.outApi.getReisterNotic),
-
+    path('epic/api/getTip', epic7.outApi.getTip),
+    path('epic/api/getBotSkills', epic7.outApi.getBotSkills)
 ]

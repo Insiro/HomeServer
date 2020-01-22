@@ -27,3 +27,7 @@ class UserTable(admin.ModelAdmin):
     list_display=['UID','name']
 
 admin.site.register(Models.user, UserTable)
+
+class BotSkillTable(admin.ModelAdmin):
+    list_display=['Skill']
+admin.site.register(Models.BotSkills, BotSkillTable)
