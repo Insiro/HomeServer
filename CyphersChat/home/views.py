@@ -10,7 +10,7 @@ from django.db.models import Q
 def index(request):
     lagList = homeModel.usableLanguages.objects.all()
     skillList = homeModel.skill.objects.all()
-    return render(request, 'index.html', {"lang":lagList, "skills":skillList})
+    return render(request, 'index.html', {"lang": lagList, "skills": skillList})
 
 
 def search(request):
@@ -40,13 +40,14 @@ def info(request):
 def detail(request):
     getData = request.GET
     for r in getData:
-        r.replace('<', "&lt")
+        r.replace('<', "&lt;").replace('&lt;a', '<a').replace('&lt;/', '</')
     datas = {'id': 0, 'kate': None, 'Dat': None, 'img': None}
     if 'id'in getData:
         ID = getData.get('id')
         datas['id'] = ID
         datas['Dat'] = model_to_dict(projects.objects.get(id=int(ID)))
-        datas['Dat']['context'] =(""+datas['Dat']['context']).replace("\r\n","</br>")
+        datas['Dat']['context'] = (
+            ""+datas['Dat']['context']).replace("\r\n", "</br>")
         kate = model_to_dict(Kategorie.objects.get(id=datas['Dat']['kate']))
         datas['kate'] = kate['name']
         datas['img'] = project_Img.objects.filter(projects_id=int(ID))
