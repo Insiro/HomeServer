@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '-y5#3=jm5otio5djqnfxd8fm%5(jk(iqdr-6teevz0*iu-gx#i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = '*'
 
@@ -59,7 +59,6 @@ MIDDLEWARE = [
 ]
 CORS_ALLOWED_HOSTS = ['*']
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = True
 CORS_PREFLIGHT_MAX_AGE = 86400
 CORS_ALLOW_METHODS = [
     'DELETE',
@@ -157,3 +156,11 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 #MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
+EMAIL_HOST = "smtp.daum.net"
+EMAIL_PORT = '465'
+EMAIL_HOST_USER = 'piesignal@insiro.me'
+EMAIL_HOST_PASSWORD = 'kim2714ok@'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
