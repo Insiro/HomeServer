@@ -37,6 +37,7 @@ class user(models.Model):
     name = models.CharField(max_length=100)
     UPW = models.CharField(max_length=100)
     Signed = models.BooleanField(default=False)
+    isManager = models.BooleanField(default=False)
 
     def __str__(self):
         return self.UID + ' : '+self.name
