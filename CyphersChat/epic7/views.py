@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import epic7.models as e7Models
 from django.db.models import Q
 from django.core.exceptions import PermissionDenied
@@ -8,7 +8,13 @@ from django.core.exceptions import PermissionDenied
 def index(request):
     noticLit = e7Models.notic.objects.filter(important=True)
     hintLit = e7Models.tips.objects.filter(important=True)
-    return render(request, 'e7index.html', {'notics': noticLit, 'hints': hintLit})
+    return render(request, 'e7index.html', {'notics': noticLit, 'hints': hintLit, 'rev': False})
+
+
+def revert(request):
+    noticLit = e7Models.notic.objects.filter(important=True)
+    hintLit = e7Models.tips.objects.filter(important=True)
+    return render(request, 'e7index.html', {'notics': noticLit, 'hints': hintLit, 'rev': True})
 
 
 def tiplit(request):
@@ -43,7 +49,7 @@ def notic(request):
 
 def post(request):
     if not request.session.get('isSigned'):
-        raise PermissionDenied
+        return redirect(revert)
     return render(request, 'e7post.html')
 
 
@@ -71,9 +77,10 @@ class Astatus:
             damage = damage*1.1
         return damage
 
+
 def damageCalc(request):
     herolist = e7Models.Heros.objects.all().order_by('name')
-    return render(request, 'e7damageCalc.html', {'heros':herolist})
+    return render(request, 'e7damageCalc.html', {'heros': herolist})
 
 
 def detail(request):
