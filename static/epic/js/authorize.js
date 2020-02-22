@@ -1,6 +1,18 @@
 function login() {
-    var form = document.getElementByID("loginform").value;
-    window.open(form + "id :" + form.id);
+    datas = {
+        uid: document.getElementById("login_id").value,
+        upw: document.getElementById("login_pwd").value
+    };
+    data = new FormData();
+    data.append("data", JSON.stringify(datas));
+    req = new XMLHttpRequest();
+    req.open("POST", "api/authorize", true);
+    req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=unicode");
+    req.addEventListener("load", function() {
+        json = JSON.parse(req.responseText);
+        reloadLoginState(true);
+    });
+    req.send(data);
 }
 
 function reloadLoginState(loginBox) {
@@ -9,12 +21,12 @@ function reloadLoginState(loginBox) {
         $("#Login").modal("hide");
     }
 
-    loginXhttpRequest.open("GET", "php/isLoggedin.php");
+    loginXhttpRequest.open("GET", "api/isAuthrized");
     loginXhttpRequest.addEventListener("load", function() {
         var log_in_item = document.getElementById("logged_nav").style;
         var un_log_in_tem = document.getElementById("unlogged_nav").style;
         json = JSON.parse(loginXhttpRequest.responseText);
-        if (json.login) {
+        if (json.result) {
             log_in_item.display = "none";
             un_log_in_tem.display = "";
         } else {
@@ -35,13 +47,10 @@ function loginRequest() {
     // Testing Code Only
     xhttp.open("POST", "php/makelogin.php");
 
-    xhttp.setRequestHeader(
-        "Content-Type",
-        "application/x-www-form-urlencoded; charset=utf-8"
-    );
+    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
     xhttp.addEventListener("load", function() {
         parsedJson = JSON.parse(xhttp.responseText);
-        console.log(parsedJson)
+        console.log(parsedJson);
         if (parsedJson.success) {
             reloadLoginState(true);
         } else {
@@ -59,7 +68,7 @@ function loginRequest() {
 
 function logout() {
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "php/logout.php");
+    xhttp.open("GET", "api/signOut");
 
     xhttp.addEventListener("load", function() {
         reloadLoginState(false);
