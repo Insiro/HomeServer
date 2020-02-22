@@ -3,7 +3,9 @@ from django.shortcuts import render, get_object_or_404
 import epic7.models as e7Models
 from django.forms.models import model_to_dict
 from django.core import serializers
-from django.contrib.auth.hashers import make_password
+from django.contrib.auth.hashers import make_password, check_password
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
+import json
 
 
 def info(request):
@@ -13,7 +15,7 @@ def info(request):
     table = req.get("table")
     id = req.get("id")
     if(table == 'notic'):
-        data =  e7Models.notic.objects.get(id=int(id))
+        data = e7Models.notic.objects.get(id=int(id))
         data = model_to_dict(data)
         print(data)
     elif(table == 'tips'):
@@ -35,25 +37,49 @@ def allRank(requests):
     return JsonResponse({"data": data}, json_dumps_params={'ensure_ascii': False})
 
 
+def jsonfy(string):
+    li = "{"+string.split("{")[1]
+    li = li.split("}")[0]+"}"
+    data = json.loads(li)
+    return data
+
+
+@csrf_exempt
 def authorize(request):
     if request.method == 'POST':
-        uid = request.POST['id']
-        upw = request.POST['pw']
-        us = get_object_or_404(e7Models.user, UID=uid, UPW=make_password(upw))
-        request.session['isSigned'] = True
-        request.session['uid'] = uid
-        request.session['name'] = us.name
-        return JsonResponse({"result": "success"})
-    return JsonResponse({"result": "fail"})
+        li = request.POST.get(' name')
+        data = jsonfy(li)
+        uid = data['uid']
+        upw = data['upw']
+        rows = e7Models.user.objects.all().filter(UID=uid)
+        cryptedPW = ""
+        if(len(rows) == 1):
+            row = model_to_dict(rows[0])
+            cryptedPW = row['UPW']
+            name = row['name']
+            manager = row['isManager']
+        reuslt = check_password(upw, cryptedPW)
+        if reuslt:
+            request.session['isSigned'] = True
+            request.session['isManager'] = manager
+            request.session['uid'] = uid
+            request.session['name'] = name
+        return JsonResponse({"result": reuslt}, content_type="application/json")
+    return JsonResponse({"result": "fail"}, content_type="application/json")
+
+
+def signOut(request):
+    request.session['isSigned'] = False
+    return JsonResponse({"result": False})
+
 
 def isAuthrized(request):
     if request.session.get('isSigned'):
-        return JsonResponse({"result":True})
-    return JsonResponse({"result":False})
+        return JsonResponse({"result": True})
+    return JsonResponse({"result": False})
 
 
-
-
+@csrf_exempt
 def changePWD(request):
     if request.method == 'POST':
         UID = request.POST['id']
@@ -61,17 +87,31 @@ def changePWD(request):
         NEW = request.POST['newUPW']
         get_object_or_404(e7Models.user, UID=UID, UPW=make_password(
             UPW)).update(UPW=make_password(NEW))
-        return JsonResponse({"result": "success"})
-    return JsonResponse({"result": "fail"})
+        return JsonResponse({"result": "success"}, content_type="application/json")
+    return JsonResponse({"result": "fail"}, content_type="application/json")
 
 
+@csrf_exempt
+def Signe(request):
+    session = request.session
+    if session['isSigned'] and session['ismanager'] and request.method == 'POST':
+        data = jsonfy(request.POST.get(' name'))
+        rows = e7Models.user.objects.all().filter(UID=data['uid'])
+        if len(rows) != 1:
+            return JsonResponse({"result": "fail"}, content_type="application/json")
+        rows[0].update(
+            Signed=True, isManager=data['setManager']).save()
+    return JsonResponse({"result": "success"}, content_type="application/json")
+
+
+@csrf_exempt
 def register(request):
     if request.method == 'POST':
         if not(UID and UPW and name):
-            return JsonResponse({"result": "fail"})
+            return JsonResponse({"result": "fail"}, content_type="application/json")
         e7Models.user(
             UID=request.POST['id'],
             UPW=make_password(request.POST['pw']),
             name=request.POST['name'],
             Signed=False).save()
-    return JsonResponse({"result": "success"})
+    return JsonResponse({"result": "success"}, content_type="application/json")
